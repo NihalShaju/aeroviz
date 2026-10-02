@@ -1,0 +1,42 @@
+:root {
+  /* Brand Colors */
+  --navy:        #022a44;   /* brand navy */
+  --navy-950:    #01121d;
+  --navy-900:    #022a44;   /* primary surface */
+  --navy-800:    #063b5e;
+  --navy-700:    #0b4e7b;
+  --navy-600:    #116298;
+  --navy-300:    #7d9bb3;
+  --navy-100:    #dbe6ef;
+  --navy-50:     #eef3f8;
+
+  /* Pink scale */
+  --pink:        #e02f78;   /* primary action & highlights */
+  --pink-700:    #b81f5e;   /* hover / pressed */
+  --pink-500:    #e02f78;
+  --pink-400:    #eb5090;
+  --pink-100:    #fbd9e7;
+  --pink-50:     #fef0f6;
+
+  /* Light Theme Variables */
+  --page:        #ffffff;
+  --page-surface: #f8fafc;
+  --ink:         #0f172a;   /* slate-900 */
+  --ink-muted:   #475569;   /* slate-600 */
+  --ink-heading: #022a44;   /* deep navy heading */
+  --border-line: rgba(2, 42, 68, 0.12);
+
+  --glass-fill:  linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+  --glass-line:  rgba(2, 42, 68, 0.14);
+  --glass-shadow: 0 1px 0 rgba(255, 255, 255, 1) inset,
+                  0 20px 40px -15px rgba(2, 42, 68, 0.1);
+  --glass-hover-line: rgba(224, 47, 120, 0.45);
+
+  --glass-card:  linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.9));
+  --glass-card-line: rgba(2, 42, 68, 0.12);
+
+  --glass-dark:  linear-gradient(135deg, #ffffff, #f8fafc);
+  --glass-dark-line: rgba(2, 42, 68, 0.12);
+  --glass-dark-shadow: 0 1px 0 rgba(255, 255, 255, 1) inset,
+                       0 24px 48px -15px rgba(2, 42, 68, 0.12);
+}

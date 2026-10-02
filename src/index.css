@@ -1,0 +1,55 @@
+@import './styles/tokens.css';
+@import './styles/glass.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    color: #022a44;
+  }
+}
+
+/* Form/select dropdown option colors */
+select option {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e02f78;
+}
