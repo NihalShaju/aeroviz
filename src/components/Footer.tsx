@@ -64,8 +64,6 @@ export const Footer: React.FC = () => {
               <li><a href="#services" className="hover:text-pink transition-colors">3. Single / Multiple Entry Visa</a></li>
               <li><a href="#services" className="hover:text-pink transition-colors">4. Family Visa Sponsorship</a></li>
               <li><a href="#services" className="hover:text-pink transition-colors">5. 2-Year Residence Visa</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">6. Transit Visa (48h / 96h)</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">10. Saudi Visa (eVisa/Umrah)</a></li>
             </ul>
           </div>
 
@@ -75,13 +73,13 @@ export const Footer: React.FC = () => {
               Flights & Experiences
             </h4>
             <ul className="space-y-2 text-sm  text-slate-600">
-              <li><a href="#flights" className="hover:text-pink transition-colors font-semibold text-pink">11. Flight Tickets to Every Country</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">7. Airport Transfers (24/7)</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">8. Holiday Tour Packages</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">9. Hajj & Umrah Services</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">12. Desert Safari Adventure</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">13. City Sightseeing Tours</a></li>
-              <li><a href="#services" className="hover:text-pink transition-colors">14. Luxury Yacht Services</a></li>
+              <li><a href="#flights" className="hover:text-pink transition-colors font-semibold text-pink">7. Flight Tickets to Every Country</a></li>
+              <li><a href="#services" className="hover:text-pink transition-colors">6. Holiday Tour Packages</a></li>
+              <li><a href="#services" className="hover:text-pink transition-colors font-semibold text-slate-800">8. Farm Stay Retreats</a></li>
+              <li><a href="#services" className="hover:text-pink transition-colors">9. Desert Safari Adventure</a></li>
+              <li><a href="#services" className="hover:text-pink transition-colors">10. City Sightseeing Tours</a></li>
+              <li><a href="#services" className="hover:text-pink transition-colors">11. Luxury Yacht Services</a></li>
+              <li><a href="#services" className="hover:text-pink transition-colors">12. Hajj & Umrah Services</a></li>
             </ul>
           </div>
 

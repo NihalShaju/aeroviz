@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   FileCheck2,
   RefreshCw,
   PlaneTakeoff,
   Users,
   Home,
-  Car,
   Package,
   Moon,
   Ticket,
   TreePine,
-  Compass,
   Building2,
   Ship,
+  Palmtree,
   ArrowRight,
   Globe2,
   CheckCircle2,
   Sparkles,
+  LayoutGrid,
+  Layers,
+  RefreshCcw,
+  Play,
+  Pause,
+  Hand,
 } from 'lucide-react';
 import { waLink } from '../lib/contact';
+import { InteractiveCardStack } from './InteractiveCardStack';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 export interface Service {
@@ -32,9 +38,10 @@ export interface Service {
   badge?: string;
   highlight?: boolean;
   feature?: string;
+  image?: string;
 }
 
-// ─── The Complete 14 Services Provided by Aeroviz ─────────────────────────────
+// ─── The Complete 12 Services Provided by Aeroviz ─────────────────────────────
 export const ALL_SERVICES: Service[] = [
   {
     id: 1,
@@ -74,6 +81,7 @@ export const ALL_SERVICES: Service[] = [
     icon: Users,
     query: 'Family Visa Sponsorship',
     feature: 'Full Family Sponsorship',
+    image: '/images/family-visa.jpg',
   },
   {
     id: 5,
@@ -87,24 +95,6 @@ export const ALL_SERVICES: Service[] = [
   },
   {
     id: 6,
-    title: 'Transit Visa',
-    category: 'visa',
-    desc: '48-hour and 96-hour stopover visas for travelers transiting through UAE airports. Step out and explore Dubai between flights.',
-    icon: Compass,
-    query: 'UAE Transit Visa (48h / 96h)',
-    feature: '48h & 96h Stopovers',
-  },
-  {
-    id: 7,
-    title: 'Airport Transfers',
-    category: 'flight-travel',
-    desc: '24/7 private, executive, and family airport transfers across DXB, DWC, AUH, and SHJ. On-time, comfortable door-to-door rides.',
-    icon: Car,
-    query: 'Airport Transfer Service',
-    feature: '24/7 All UAE Airports',
-  },
-  {
-    id: 8,
     title: 'Tour Packages',
     category: 'flight-travel',
     desc: 'Customized all-inclusive holiday packages combining flights, handpicked hotels, excursions, and transfers worldwide.',
@@ -114,28 +104,7 @@ export const ALL_SERVICES: Service[] = [
     feature: 'Domestic & Worldwide',
   },
   {
-    id: 9,
-    title: 'Hajj / Umrah Services',
-    category: 'experience',
-    desc: 'End-to-end spiritual pilgrimage packages with Umrah visas, flights, top-rated hotels in Makkah & Madinah, and ground support.',
-    icon: Moon,
-    query: 'Hajj and Umrah Services',
-    badge: 'Spiritual',
-    highlight: true,
-    feature: 'Visa + Flights + Makkah Hotels',
-  },
-  {
-    id: 10,
-    title: 'Saudi Visa',
-    category: 'visa',
-    desc: 'Fast electronic visa processing for Saudi Arabia — tourist eVisas, Umrah visas, business visits, and multiple-entry GCC permits.',
-    icon: FileCheck2,
-    query: 'Saudi Arabia Visa (Tourist / Umrah / Business)',
-    badge: 'GCC Travel',
-    feature: 'Express Saudi eVisa',
-  },
-  {
-    id: 11,
+    id: 7,
     title: 'Flight Tickets',
     category: 'flight-travel',
     desc: 'Aeroviz helps with booking flight tickets to every country! Best airfares, direct & connecting routes across 500+ global airlines.',
@@ -146,7 +115,18 @@ export const ALL_SERVICES: Service[] = [
     feature: 'Worldwide Flights to Every Country',
   },
   {
-    id: 12,
+    id: 8,
+    title: 'Farm Stay',
+    category: 'experience',
+    desc: 'Private luxury farm retreats and countryside villas across the UAE. Private swimming pools, fruit orchards, outdoor BBQ, and relaxing family escapes.',
+    icon: Palmtree,
+    query: 'Farm Stay and Countryside Villas',
+    badge: 'Nature Retreat',
+    feature: 'Private Pool & Countryside',
+    image: '/images/farm-stay.jpg',
+  },
+  {
+    id: 9,
     title: 'Desert Safari',
     category: 'experience',
     desc: 'The iconic Arabian desert experience: 4x4 dune bashing, quad biking, camel rides, live shows, and authentic BBQ buffet dinner.',
@@ -156,7 +136,7 @@ export const ALL_SERVICES: Service[] = [
     feature: 'Dune Bashing & BBQ Dinner',
   },
   {
-    id: 13,
+    id: 10,
     title: 'City Tours',
     category: 'experience',
     desc: 'Guided sightseeing tours across Dubai, Abu Dhabi, Sharjah & Al Ain. Visit Burj Khalifa, Museum of the Future, Louvre & mosques.',
@@ -165,7 +145,7 @@ export const ALL_SERVICES: Service[] = [
     feature: 'Dubai & Abu Dhabi Highlights',
   },
   {
-    id: 14,
+    id: 11,
     title: 'Yacht Services',
     category: 'experience',
     desc: 'Private luxury yacht charters in Dubai Marina & Palm Jumeirah for sunset cruises, birthdays, VIP hospitality, and corporate events.',
@@ -174,80 +154,121 @@ export const ALL_SERVICES: Service[] = [
     badge: 'Luxury VIP',
     feature: 'Dubai Marina & Palm Jumeirah',
   },
+  {
+    id: 12,
+    title: 'Hajj / Umrah Services',
+    category: 'experience',
+    desc: 'End-to-end spiritual pilgrimage packages with Umrah visas, flights, top-rated hotels in Makkah & Madinah, and ground support.',
+    icon: Moon,
+    query: 'Hajj and Umrah Services',
+    badge: 'Spiritual',
+    highlight: true,
+    feature: 'Visa + Flights + Makkah Hotels',
+  },
 ];
 
 const TABS = [
-  { id: 'all', label: 'All Services (14)' },
+  { id: 'all', label: 'All Services (12)' },
   { id: 'visa', label: 'Visas & Immigration' },
   { id: 'flight-travel', label: 'Flights & Travel' },
   { id: 'experience', label: 'Tours & Experiences' },
 ];
 
-// ─── Service Card ─────────────────────────────────────────────────────────────
-const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
+// ─── Service Card Content (Shared between Grid & 3D Stack) ─────────────────────
+const ServiceCardContent: React.FC<{ service: Service; isStackCard?: boolean }> = ({ service, isStackCard = false }) => {
   const Icon = service.icon;
   const waUrl = waLink(
     `Hi Aeroviz, I'm interested in #${service.id}. ${service.title}. Please provide details, requirements, and pricing.`
   );
 
   return (
-    <motion.div
-      whileHover={{ y: -4, scale: 1.01 }}
-      transition={{ duration: 0.2 }}
-      className={`group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl border transition-all duration-300 shadow-lg h-full ${
-        service.highlight
+    <div
+      className={`group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl border transition-all duration-300 h-full overflow-hidden ${
+        isStackCard
+          ? 'border-slate-200/90 shadow-lg bg-white'
+          : service.highlight
           ? 'bg-white border-slate-200/80 hover:border-pink/40 shadow-sm'
           : 'bg-white border-slate-200/80 hover:border-pink/40 hover:bg-pink-50/30 shadow-sm'
       }`}
     >
-      {/* Top Number & Badge Row */}
-      <div className="flex items-center justify-between mb-3.5">
-        <span className="text-xs font-mono font-bold    text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">
-          #{service.id.toString().padStart(2, '0')}
-        </span>
-        {service.badge && (
-          <span className="text-[11px] font-bold text-pink bg-pink/15 px-2.5 py-0.5 rounded-full border border-pink/25">
-            {service.badge}
-          </span>
-        )}
-      </div>
+      {/* Background Image if present */}
+      {service.image && (
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          {/* Dimming overlay (calibrated so image is 30% more visible while text stays crisp) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/40 to-white/65 backdrop-blur-[0.5px] transition-colors duration-300 group-hover:from-white/40 group-hover:via-white/35 group-hover:to-white/60" />
+        </div>
+      )}
 
-      {/* Icon */}
-      <div
-        className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110 ${
-          service.highlight
-            ? 'bg-pink text-white shadow-pinkGlow'
-            : ' text-pink  bg-pink/10 border border-pink/20 group-hover:bg-pink group-hover:text-white'
-        }`}
-      >
-        <Icon className="w-6 h-6" />
-      </div>
-
-      {/* Text */}
-      <div className="flex-1">
-        <h3 className="text-lg font-heading font-bold  text-slate-900 mb-2 leading-snug group-hover:text-pink transition-colors">
-          {service.title}
-        </h3>
-        <p className="text-sm  text-slate-600 leading-relaxed mb-4">{service.desc}</p>
-        {service.feature && (
-          <div className="inline-flex items-center gap-1.5 text-xs    text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 mb-2">
-            <CheckCircle2 className="w-3.5 h-3.5 text-pink shrink-0" />
-            <span>{service.feature}</span>
+      {/* Content */}
+      <div className="relative z-10 flex flex-col justify-between h-full">
+        <div>
+          {/* Top Number & Badge Row */}
+          <div className="flex items-center justify-between mb-3.5">
+            <span className="text-xs font-mono font-bold text-slate-600 bg-white/80 border border-slate-200/90 px-2 py-0.5 rounded-md backdrop-blur-sm shadow-xs">
+              #{service.id.toString().padStart(2, '0')}
+            </span>
+            {service.badge && (
+              <span className="text-[11px] font-bold text-pink bg-pink/15 px-2.5 py-0.5 rounded-full border border-pink/25 backdrop-blur-sm">
+                {service.badge}
+              </span>
+            )}
           </div>
-        )}
-      </div>
 
-      {/* CTA Button */}
-      <a
-        href={waUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-4 pt-3 border-t  border-slate-200 inline-flex items-center justify-between text-xs font-bold text-pink hover:text-pink-700 :text-white transition-colors group-hover:translate-x-0.5"
-        aria-label={`Ask about ${service.title} on WhatsApp`}
-      >
-        <span>Enquire on WhatsApp</span>
-        <ArrowRight className="w-4 h-4 text-pink group-hover:translate-x-1 transition-transform" />
-      </a>
+          {/* Icon */}
+          <div
+            className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110 ${
+              service.highlight
+                ? 'bg-pink text-white shadow-pinkGlow'
+                : 'text-pink bg-white/80 border border-pink/30 group-hover:bg-pink group-hover:text-white backdrop-blur-sm shadow-xs'
+            }`}
+          >
+            <Icon className="w-6 h-6" />
+          </div>
+
+          {/* Text */}
+          <h3 className="text-lg font-heading font-bold text-slate-900 mb-2 leading-snug group-hover:text-pink transition-colors">
+            {service.title}
+          </h3>
+          <p className={`text-sm leading-relaxed mb-4 ${service.image ? 'text-white font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]' : 'text-slate-600'}`}>{service.desc}</p>
+          {service.feature && (
+            <div className="inline-flex items-center gap-1.5 text-xs text-slate-800 bg-white/85 px-2.5 py-1 rounded-lg border border-slate-200/90 mb-2 backdrop-blur-sm shadow-xs">
+              <CheckCircle2 className="w-3.5 h-3.5 text-pink shrink-0" />
+              <span>{service.feature}</span>
+            </div>
+          )}
+        </div>
+
+        {/* CTA Button */}
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="mt-4 pt-3 border-t border-slate-300/80 inline-flex items-center justify-between text-xs font-bold text-pink hover:text-pink-700 transition-colors group-hover:translate-x-0.5"
+          aria-label={`Ask about ${service.title} on WhatsApp`}
+        >
+          <span>Enquire on WhatsApp</span>
+          <ArrowRight className="w-4 h-4 text-pink group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+    </div>
+  );
+};
+
+// ─── Service Card for Grid ─────────────────────────────────────────────────────
+const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
+  return (
+    <motion.div
+      whileHover={{ y: -4, scale: 1.01 }}
+      transition={{ duration: 0.2 }}
+      className="h-full"
+    >
+      <ServiceCardContent service={service} isStackCard={false} />
     </motion.div>
   );
 };
@@ -255,10 +276,22 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
 // ─── Main Section ─────────────────────────────────────────────────────────────
 export const Services: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'stack'>('grid');
+  const [stackResetKey, setStackResetKey] = useState<number>(0);
+  const [autoplay, setAutoplay] = useState<boolean>(false);
 
   const filteredServices = activeTab === 'all'
     ? ALL_SERVICES
     : ALL_SERVICES.filter((s) => s.category === activeTab);
+
+  // Memoized cards for InteractiveCardStack
+  const stackCards = useMemo(() => {
+    return filteredServices.map((service) => (
+      <div key={service.id} className="w-full h-full select-none">
+        <ServiceCardContent service={service} isStackCard={true} />
+      </div>
+    ));
+  }, [filteredServices]);
 
   return (
     <section id="services" className="py-16 sm:py-20 lg:py-28 relative z-20">
@@ -271,11 +304,11 @@ export const Services: React.FC = () => {
             <span>Complete Services Portfolio</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold  text-slate-900 tracking-tight leading-tight mb-4">
-            All 14 Services Provided by <br />
+            All 12 Services Provided by <br />
             <span className="text-pink">Aeroviz Travel & Tourism</span>
           </h2>
           <p className=" text-slate-600 text-base sm:text-lg leading-relaxed">
-            From UAE tourist visas, Saudi visas, and status change trips to yacht charters, desert safaris, and flight tickets to every country — explore our complete range below.
+            From UAE tourist visas and status change trips to private farm stays, yacht charters, desert safaris, and flight tickets to every country — explore our complete range below.
           </p>
         </div>
 
@@ -306,38 +339,127 @@ export const Services: React.FC = () => {
           </a>
         </div>
 
-        {/* Category Tabs (Horizontal Scroll on Mobile) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar touch-pan-x -mx-4 px-4 sm:mx-0 sm:px-0">
-          {TABS.map((tab) => {
-            const active = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 whitespace-nowrap shrink-0 flex items-center gap-2 ${
-                  active
-                    ? 'bg-pink text-white shadow-pinkGlow'
-                    : '  :bg-white/15 :text-white  bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200'
-                }`}
-              >
-                <span>{tab.label}</span>
-              </button>
-            );
-          })}
+        {/* Category Tabs & View Switcher Row */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          {/* Category Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 no-scrollbar touch-pan-x -mx-4 px-4 sm:mx-0 sm:px-0">
+            {TABS.map((tab) => {
+              const active = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 whitespace-nowrap shrink-0 flex items-center gap-2 ${
+                    active
+                      ? 'bg-pink text-white shadow-pinkGlow'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* View Mode Switcher: Grid vs 3D Interactive Deck */}
+          <div className="flex items-center self-start sm:self-auto gap-1 p-1 bg-slate-100/90 rounded-2xl border border-slate-200 shrink-0 shadow-inner">
+            <button
+              onClick={() => setViewMode('grid')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                viewMode === 'grid'
+                  ? 'bg-white text-slate-900 shadow-xs'
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+              title="Show standard grid layout"
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span>Grid View</span>
+            </button>
+            <button
+              onClick={() => setViewMode('stack')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                viewMode === 'stack'
+                  ? 'bg-pink text-white shadow-pinkGlow'
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+              title="Switch to 3D interactive card deck"
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>3D Deck ({filteredServices.length})</span>
+            </button>
+          </div>
         </div>
 
-        {/* Cards Grid */}
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
-        >
-          {filteredServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </motion.div>
+        {/* View Mode Content */}
+        {viewMode === 'grid' ? (
+          /* Cards Grid */
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
+          >
+            {filteredServices.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </motion.div>
+        ) : (
+          /* 3D Interactive Card Stack Showcase Stage */
+          <motion.div
+            key={`stack-${activeTab}`}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col items-center justify-center py-6 sm:py-10"
+          >
+            {/* Ambient card pedestal with glow */}
+            <div className="relative group w-full max-w-[340px] sm:max-w-[380px] h-[480px]">
+              <div className="absolute -inset-6 bg-gradient-to-tr from-pink/25 via-pink/10 to-amber-100/30 rounded-[36px] blur-2xl -z-10 pointer-events-none opacity-80" />
+              
+              <InteractiveCardStack
+                key={`${activeTab}-${stackResetKey}`}
+                cards={stackCards}
+                randomRotation={true}
+                sendToBackOnClick={true}
+                autoplay={autoplay}
+                autoplayDelay={3500}
+                pauseOnHover={true}
+                sensitivity={140}
+                className="w-full h-full"
+              />
+            </div>
+
+            {/* Stack Controls Bar */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={() => setStackResetKey((prev) => prev + 1)}
+                className="btn-glass px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-sm"
+                title="Reset stack to initial order"
+              >
+                <RefreshCcw className="w-3.5 h-3.5 text-pink" />
+                <span>Reset Deck</span>
+              </button>
+
+              <button
+                onClick={() => setAutoplay(!autoplay)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 border transition-all ${
+                  autoplay
+                    ? 'bg-pink text-white border-pink shadow-pinkGlow'
+                    : 'bg-white text-slate-700 border-slate-200 hover:border-pink/40 shadow-sm'
+                }`}
+              >
+                {autoplay ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                <span>{autoplay ? 'Pause Cycle' : 'Auto Cycle'}</span>
+              </button>
+
+              <div className="text-xs text-slate-500 font-medium px-3.5 py-2 rounded-full bg-slate-100 border border-slate-200 flex items-center gap-1.5">
+                <Hand className="w-3.5 h-3.5 text-pink" />
+                <span>Drag to flick or click top card to cycle</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
 
         {/* Bottom CTA strip */}
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl   bg-slate-100/80 border border-slate-200 backdrop-blur-md">

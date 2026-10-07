@@ -4,6 +4,7 @@ import { Menu, X, Phone, MessageCircle, ArrowRight } from 'lucide-react';
 import { Wordmark } from './Wordmark';
 import { CONTACT } from '../lib/contact';
 import { createQuickQuoteUrl } from '../lib/whatsapp';
+import { GlowCursorButton } from './GlowCursorButton';
 
 const NAV_ITEMS = [
   { label: 'Services', href: '#services' },
@@ -88,27 +89,31 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Quote Button */}
         <div className="hidden lg:flex items-center gap-3">
-          <a
+          <GlowCursorButton
             href={createQuickQuoteUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-pink px-5 py-2 rounded-full text-[15px] font-semibold flex items-center gap-2 shadow-pinkGlow"
+            size="sm"
+            variant="pink"
+            showArrow={true}
           >
-            <span>Get a quote</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+            Get a quote
+          </GlowCursorButton>
         </div>
 
         {/* Mobile Header Controls */}
         <div className="flex items-center gap-2 lg:hidden">
-          <a
+          <GlowCursorButton
             href={createQuickQuoteUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-pink px-3 py-1.5 rounded-full text-xs font-semibold sm:hidden shadow-pinkGlow"
+            size="sm"
+            variant="pink"
+            showArrow={false}
+            className="sm:hidden px-3.5 py-1.5 text-xs"
           >
             Quote
-          </a>
+          </GlowCursorButton>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

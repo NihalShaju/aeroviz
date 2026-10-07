@@ -12,8 +12,8 @@ const FAQS = [
     a: 'Visa Change by Flight (Airport to Airport / A2A) is a fast same-day option where you take a short flight to a neighboring hub and return on the same day with your new UAE visa. Visa Change by Bus is a budget-friendly overland trip to Oman (Hatta border) coordinated with luxury bus transport and visa clearance.',
   },
   {
-    q: 'Do you process Saudi visas (Tourist, Umrah, and Business)?',
-    a: 'Yes. We process Saudi Arabia tourist eVisas, Umrah pilgrimage visas, GCC resident permits, and business visas with fast electronic turnaround and step-by-step guidance.',
+    q: 'Can you arrange Farm Stays and Private Villa Retreats in the UAE?',
+    a: 'Yes! We arrange private luxury farm stays and countryside villas across the UAE (Ras Al Khaimah, Fujairah, Hatta, and Al Ain) featuring private swimming pools, barbecue setups, fruit orchards, and scenic mountain views for family and group getaways.',
   },
   {
     q: 'What documents are required to apply for a UAE tourist visa?',
@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: 'Do you offer desert safaris, city tours, and yacht charters?',
-    a: 'Absolutely! We arrange private luxury yacht charters in Dubai Marina & Palm Jumeirah, full evening desert safaris with BBQ and dune bashing, airport transfers, and guided city sightseeing tours across Dubai and Abu Dhabi.',
+    a: 'Absolutely! We arrange private luxury yacht charters in Dubai Marina & Palm Jumeirah, full evening desert safaris with BBQ and dune bashing, and guided city sightseeing tours across Dubai and Abu Dhabi.',
   },
 ];
 

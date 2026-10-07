@@ -210,20 +210,18 @@ export const Contact: React.FC = () => {
                     onChange={(e) => handleServiceChange(e.target.value)}
                     className="w-full px-4 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
                   >
-                    <option value="11. Flight Tickets to Every Country" className="  bg-white text-slate-900">✈️ 11. Flight Tickets to Every Country (Worldwide)</option>
+                    <option value="7. Flight Tickets to Every Country" className="  bg-white text-slate-900">✈️ 7. Flight Tickets to Every Country (Worldwide)</option>
                     <option value="1. Tourist Visa (30/60 Days)" className="  bg-white text-slate-900">1. Tourist Visa (30/60 Days)</option>
                     <option value="2. Visa Change by Flight & Bus" className="  bg-white text-slate-900">2. Visa Change by Flight and Bus</option>
                     <option value="3. Single / Multiple Entry Visa" className="  bg-white text-slate-900">3. Single / Multiple Entry Visa</option>
                     <option value="4. Family Visa Sponsorship" className="  bg-white text-slate-900">4. Family Visa</option>
                     <option value="5. 2-Year Residence Visa" className="  bg-white text-slate-900">5. 2 Years Residence Visa</option>
-                    <option value="6. Transit Visa (48h/96h)" className="  bg-white text-slate-900">6. Transit Visa</option>
-                    <option value="7. Airport Transfers" className="  bg-white text-slate-900">7. Airport Transfers (24/7)</option>
-                    <option value="8. Tour Packages" className="  bg-white text-slate-900">8. Tour Packages</option>
-                    <option value="9. Hajj & Umrah Services" className="  bg-white text-slate-900">9. Hajj / Umrah Services</option>
-                    <option value="10. Saudi Visa" className="  bg-white text-slate-900">10. Saudi Visa (Tourist/Umrah/Business)</option>
-                    <option value="12. Desert Safari Adventure" className="  bg-white text-slate-900">12. Desert Safari</option>
-                    <option value="13. City Tours" className="  bg-white text-slate-900">13. City Tours (Dubai & Abu Dhabi)</option>
-                    <option value="14. Yacht Services" className="  bg-white text-slate-900">14. Yacht Services (Dubai Marina)</option>
+                    <option value="6. Tour Packages" className="  bg-white text-slate-900">6. Tour Packages</option>
+                    <option value="8. Farm Stay Retreat" className="  bg-white text-slate-900">🏡 8. Farm Stay Retreat (Private Villas & Pools)</option>
+                    <option value="9. Desert Safari Adventure" className="  bg-white text-slate-900">9. Desert Safari</option>
+                    <option value="10. City Tours" className="  bg-white text-slate-900">10. City Tours (Dubai & Abu Dhabi)</option>
+                    <option value="11. Yacht Services" className="  bg-white text-slate-900">11. Yacht Services (Dubai Marina)</option>
+                    <option value="12. Hajj & Umrah Services" className="  bg-white text-slate-900">12. Hajj / Umrah Services</option>
                   </select>
                 </div>
 

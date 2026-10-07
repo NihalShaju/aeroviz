@@ -4,6 +4,7 @@ import { Phone, MessageCircle, ShieldCheck, Clock, FileCheck } from 'lucide-reac
 import { EnquiryWidget } from './EnquiryWidget';
 import { FloatingTiles } from './FloatingTiles';
 import { CONTACT, waLink } from '../lib/contact';
+import { GlowCursorButton } from './GlowCursorButton';
 
 export const Hero: React.FC = () => {
   const primaryPhone = CONTACT.phones[0];
@@ -95,7 +96,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-base sm:text-lg lg:text-xl  text-slate-600 leading-[1.65] max-w-[65ch] mb-8 font-normal"
             >
-              Aeroviz specializes in UAE tourist visas, visa changes by flight and bus, Saudi visas, family and residence permits, and booking flight tickets to <strong className=" text-slate-900 font-semibold">every country</strong> worldwide. Message us on WhatsApp for fast clearance & best fares.
+              Aeroviz specializes in UAE tourist visas, visa changes by flight and bus, family and residence permits, luxury farm stays, and booking flight tickets to <strong className=" text-slate-900 font-semibold">every country</strong> worldwide. Message us on WhatsApp for fast clearance & best fares.
             </motion.p>
 
             {/* Action Buttons */}
@@ -105,19 +106,21 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="flex flex-wrap items-center gap-4 mb-8"
             >
-              <a
+              <GlowCursorButton
                 href={waLink("Hi Aeroviz, I want to start my visa / travel booking.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-pink px-7 py-3.5 rounded-full text-base font-bold flex items-center gap-2.5 shadow-pinkGlow"
+                size="md"
+                variant="pink"
+                icon={<MessageCircle className="w-5 h-5" />}
+                showArrow={true}
               >
-                <MessageCircle className="w-5 h-5" />
-                <span>Start on WhatsApp</span>
-              </a>
+                Start on WhatsApp
+              </GlowCursorButton>
 
               <a
                 href={`tel:${primaryPhone.tel}`}
-                className="    bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 px-6 py-3.5 rounded-full text-base font-bold flex items-center gap-2 shadow-sm transition-all"
+                className="btn-glass px-6 py-3.5 rounded-full text-base font-bold flex items-center gap-2 shadow-sm"
               >
                 <Phone className="w-5 h-5 text-pink" />
                 <span className="tabular-nums">Call {primaryPhone.display}</span>

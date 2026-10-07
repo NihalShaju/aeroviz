@@ -1,5 +1,4 @@
 import { ThemeProvider } from './context/ThemeContext';
-import { TopBar } from './components/TopBar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TrustStrip } from './components/TrustStrip';
@@ -26,9 +25,6 @@ function MainApp() {
       >
         Skip to main content
       </a>
-
-      {/* Top Contact Bar */}
-      <TopBar />
 
       {/* Floating Navbar */}
       <Navbar />

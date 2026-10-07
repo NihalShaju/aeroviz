@@ -23,10 +23,8 @@ const VISA_VALIDITY_OPTIONS = [
   { id: '60_multi', label: '60 Days - Multiple Entries Tourist Visa', visaType: '60-Day Multi-Entry Tourist Visa', entry: 'Multiple entries' as const },
   { id: 'visa_change_flight', label: 'Visa Change by Flight (Same Day)', visaType: 'Visa Change by Flight (A2A)', entry: 'Single entry' as const },
   { id: 'visa_change_bus', label: 'Visa Change by Bus (Oman / Hatta)', visaType: 'Visa Change by Bus (Border Run)', entry: 'Single entry' as const },
-  { id: 'saudi_visa', label: 'Saudi Arabia Visa (Tourist / Umrah / Business)', visaType: 'Saudi Arabia Visa', entry: 'Multiple entries' as const },
   { id: 'family_visa', label: 'Family Residence Visa Sponsorship', visaType: 'Family Residence Visa', entry: 'Multiple entries' as const },
   { id: '2yr_residence', label: '2-Year Residence Visa (Freelance / Investor)', visaType: '2-Year UAE Residence Visa', entry: 'Multiple entries' as const },
-  { id: 'transit_visa', label: 'Transit Visa (48h / 96h Stopover)', visaType: 'UAE Transit Visa', entry: 'Single entry' as const },
   { id: '90_long', label: '90 Days - Long-Term / Job Seeker Visa', visaType: '90-Day Visit / Job Seeker Visa', entry: 'Single entry' as const },
 ];
 
@@ -481,13 +479,12 @@ export const EnquiryWidget: React.FC = () => {
                 onChange={(e) => setOtherService(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
               >
+                <option value="Farm Stay Retreat" className="  bg-white text-slate-900">Farm Stay Retreat (Private Villas & Pools)</option>
                 <option value="Desert Safari Adventure" className="  bg-white text-slate-900">Desert Safari (Dune Bashing & BBQ Dinner)</option>
                 <option value="City Tours (Dubai & Abu Dhabi)" className="  bg-white text-slate-900">City Tours (Dubai, Abu Dhabi & Sightseeing)</option>
                 <option value="Private Yacht Charter" className="  bg-white text-slate-900">Yacht Services (Dubai Marina & Palm Cruising)</option>
                 <option value="Hajj & Umrah Pilgrimage" className="  bg-white text-slate-900">Hajj / Umrah Services (Full Spiritual Package)</option>
-                <option value="Airport Transfers" className="  bg-white text-slate-900">Airport Transfers (24/7 All UAE Airports)</option>
                 <option value="Custom Tour Packages" className="  bg-white text-slate-900">Tour Packages (Domestic & International Holidays)</option>
-                <option value="Saudi Visa Assistance" className="  bg-white text-slate-900">Saudi Visa (Tourist eVisa / Business / Umrah)</option>
                 <option value="2-Year Residence Visa" className="  bg-white text-slate-900">2 Years Residence Visa (Freelance / Investor)</option>
                 <option value="Family Visa Sponsorship" className="  bg-white text-slate-900">Family Visa Sponsorship & Documentation</option>
               </select>

@@ -48,7 +48,73 @@
   }
 }
 
-/* Custom interactive classes */
+/* Custom interactive classes with cursor-following glow effect */
+.btn-pink,
+.btn-glass,
+.glow-btn {
+  --x: 50%;
+  --y: 50%;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 1. Ambient surface spotlight tracking the cursor */
+.btn-pink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(110px circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.32), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+  z-index: 1;
+}
+
+/* 2. Cursor border spotlight shine */
+.btn-pink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(90px circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.95), rgba(255, 120, 175, 0.5) 45%, transparent 75%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+  z-index: 2;
+}
+
+.btn-pink:hover::before,
+.btn-pink:hover::after {
+  opacity: 1;
+}
+
+/* Ensure text and icon children sit above the glow pseudo-elements */
+.btn-pink > *,
+.btn-glass > *,
+.glow-btn > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Right-arrow SVG icon hover animation inside buttons */
+.btn-pink svg,
+.btn-glass svg,
+button svg {
+  transition: transform 0.25s ease-out;
+}
+
+.btn-pink:hover svg.lucide-arrow-right,
+button:hover svg.lucide-arrow-right,
+a.btn-pink:hover svg.lucide-arrow-right {
+  transform: translateX(4px);
+}
+
 .btn-pink {
   background-color: var(--pink);
   color: #ffffff;
@@ -56,12 +122,13 @@
   font-size: 15px;
   line-height: 1.5;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px 0 rgba(224, 47, 120, 0.35);
 }
 
 .btn-pink:hover {
   background-color: var(--pink-700);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(224, 47, 120, 0.55);
+  box-shadow: 0 14px 28px -4px rgba(224, 47, 120, 0.55), 0 0 24px -2px rgba(255, 45, 117, 0.5);
 }
 
 .btn-pink:active {
@@ -81,11 +148,44 @@
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.btn-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(100px circle at var(--x, 50%) var(--y, 50%), rgba(255, 45, 117, 0.12), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+  z-index: 1;
+}
+
+.btn-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(80px circle at var(--x, 50%) var(--y, 50%), rgba(255, 45, 117, 0.7), transparent 70%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+  z-index: 2;
+}
+
+.btn-glass:hover::before,
+.btn-glass:hover::after {
+  opacity: 1;
+}
+
 .btn-glass:hover {
   background: rgba(241, 245, 249, 1);
   border-color: rgba(224, 47, 120, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -8px rgba(2, 42, 68, 0.15);
+  box-shadow: 0 8px 20px -8px rgba(2, 42, 68, 0.15), 0 0 16px -2px rgba(255, 45, 117, 0.25);
 }
 
 .btn-glass:active {

@@ -2,6 +2,7 @@ import React from 'react';
 import { MessageCircle, Phone, Sparkles, CheckCircle2 } from 'lucide-react';
 import { CONTACT, waLink } from '../lib/contact';
 import { AerovizLogo } from './AerovizLogo';
+import { GlowCursorButton } from './GlowCursorButton';
 
 export const FinalCTA: React.FC = () => {
   const primaryPhone = CONTACT.phones[0];
@@ -53,19 +54,21 @@ export const FinalCTA: React.FC = () => {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <a
+              <GlowCursorButton
                 href={waLink("Hi Aeroviz, I want to send my passport copy for review.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-pink px-8 py-4 rounded-full text-base font-bold flex items-center gap-2.5 shadow-pinkGlow"
+                size="lg"
+                variant="pink"
+                icon={<MessageCircle className="w-5 h-5" />}
+                showArrow={true}
               >
-                <MessageCircle className="w-5 h-5" />
-                <span>Start on WhatsApp</span>
-              </a>
+                Start on WhatsApp
+              </GlowCursorButton>
 
               <a
                 href={`tel:${primaryPhone.tel}`}
-                className="   :bg-white/20 bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 px-8 py-4 rounded-full text-base font-bold flex items-center gap-2 transition-all shadow-sm"
+                className="btn-glass px-8 py-4 rounded-full text-base font-bold flex items-center gap-2 shadow-sm"
               >
                 <Phone className="w-5 h-5 text-pink" />
                 <span>Call now</span>
