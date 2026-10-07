@@ -4,7 +4,7 @@
  * Supports random rotation, autoplay, and mobile interactions.
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform, AnimatePresence, type PanInfo } from 'framer-motion';
 
 interface CardRotateProps {
@@ -94,7 +94,6 @@ export function InteractiveCardStack({
   
   // Initialize stack with IDs to track items correctly
   const [stack, setStack] = useState<{ id: string; content: React.ReactNode; randomRot: number }[]>([]);
-  const prevCardsLengthRef = useRef(cards.length);
 
   useEffect(() => {
     const checkMobile = () => {

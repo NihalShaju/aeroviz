@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export interface GlowCursorButtonProps {
   children?: React.ReactNode;
@@ -33,8 +33,6 @@ export const GlowCursorButton: React.FC<GlowCursorButtonProps> = ({
   onClick,
   'aria-label': ariaLabel,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
@@ -77,8 +75,6 @@ export const GlowCursorButton: React.FC<GlowCursorButtonProps> = ({
       onClick={onClick}
       aria-label={ariaLabel}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       style={{ '--x': '50%', '--y': '50%' } as React.CSSProperties}
       className={`group relative inline-flex items-center justify-center font-heading font-bold rounded-full transition-all duration-300 ease-out select-none active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-pink focus-visible:ring-offset-2 ${sizeClasses} ${variantClasses} ${className}`}
     >
