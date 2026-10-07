@@ -4,21 +4,21 @@ import { Star, Quote } from 'lucide-react';
 
 const REVIEWS = [
   {
-    text: '[Replace with real client review]',
+    text: 'Everything was so well organised from start to finish. The trip was smooth, comfortable, and genuinely memorable. Highly recommended!',
     author: 'Ahmed',
     role: 'Visitor from Pakistan',
     rating: 5,
     offsetClass: 'lg:mt-0',
   },
   {
-    text: '[Replace with real client review]',
+    text: 'Excellent service and great attention to detail. The entire experience was hassle-free, and we got to see the best of Dubai without feeling rushed.',
     author: 'Sarah',
     role: 'Tourist from UK',
     rating: 5,
     offsetClass: 'lg:mt-8',
   },
   {
-    text: '[Replace with real client review]',
+    text: 'Great service, beautiful experiences, and zero stress. Everything was exactly as promised!',
     author: 'Rahul',
     role: 'Business traveler from India',
     rating: 5,

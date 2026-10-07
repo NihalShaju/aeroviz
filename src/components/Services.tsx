@@ -196,8 +196,8 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
       transition={{ duration: 0.2 }}
       className={`group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl border transition-all duration-300 shadow-lg h-full ${
         service.highlight
-          ? '     bg-pink-50/70 border-pink-200/80 shadow-md hover:border-pink shadow-pinkGlow/10'
-          : '  :bg-white/[0.08] bg-white border-slate-200/80 hover:border-pink/40 hover:bg-pink-50/30 shadow-sm'
+          ? 'bg-white border-slate-200/80 hover:border-pink/40 shadow-sm'
+          : 'bg-white border-slate-200/80 hover:border-pink/40 hover:bg-pink-50/30 shadow-sm'
       }`}
     >
       {/* Top Number & Badge Row */}
@@ -280,7 +280,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Highlight Banner: Flight Tickets to Every Country */}
-        <div className="mb-10 p-4 sm:p-6 rounded-2xl      bg-gradient-to-r from-pink-50 via-pink-100/40 to-white border border-pink-200 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mb-10 p-4 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-12 rounded-xl bg-pink text-white flex items-center justify-center shrink-0 shadow-pinkGlow">
               <Globe2 className="w-6 h-6" />
