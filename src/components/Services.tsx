@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   FileCheck2,
@@ -17,15 +17,8 @@ import {
   Globe2,
   CheckCircle2,
   Sparkles,
-  LayoutGrid,
-  Layers,
-  RefreshCcw,
-  Play,
-  Pause,
-  Hand,
 } from 'lucide-react';
 import { waLink } from '../lib/contact';
-import { InteractiveCardStack } from './InteractiveCardStack';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 export interface Service {
@@ -174,19 +167,19 @@ const TABS = [
   { id: 'experience', label: 'Tours & Experiences' },
 ];
 
-// ─── Service Card Content (Shared between Grid & 3D Stack) ─────────────────────
-const ServiceCardContent: React.FC<{ service: Service; isStackCard?: boolean }> = ({ service, isStackCard = false }) => {
+// ─── Service Card Component ───────────────────────────────────────────────────
+const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
   const Icon = service.icon;
   const waUrl = waLink(
     `Hi Aeroviz, I'm interested in #${service.id}. ${service.title}. Please provide details, requirements, and pricing.`
   );
 
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -4, scale: 1.01 }}
+      transition={{ duration: 0.2 }}
       className={`group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl border transition-all duration-300 h-full overflow-hidden ${
-        isStackCard
-          ? 'border-slate-200/90 shadow-lg bg-white'
-          : service.highlight
+        service.highlight
           ? 'bg-white border-slate-200/80 hover:border-pink/40 shadow-sm'
           : 'bg-white border-slate-200/80 hover:border-pink/40 hover:bg-pink-50/30 shadow-sm'
       }`}
@@ -248,7 +241,6 @@ const ServiceCardContent: React.FC<{ service: Service; isStackCard?: boolean }> 
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
           className="mt-4 pt-3 border-t border-slate-300/80 inline-flex items-center justify-between text-xs font-bold text-pink hover:text-pink-700 transition-colors group-hover:translate-x-0.5"
           aria-label={`Ask about ${service.title} on WhatsApp`}
         >
@@ -256,19 +248,6 @@ const ServiceCardContent: React.FC<{ service: Service; isStackCard?: boolean }> 
           <ArrowRight className="w-4 h-4 text-pink group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
-    </div>
-  );
-};
-
-// ─── Service Card for Grid ─────────────────────────────────────────────────────
-const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
-  return (
-    <motion.div
-      whileHover={{ y: -4, scale: 1.01 }}
-      transition={{ duration: 0.2 }}
-      className="h-full"
-    >
-      <ServiceCardContent service={service} isStackCard={false} />
     </motion.div>
   );
 };
@@ -276,22 +255,10 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
 // ─── Main Section ─────────────────────────────────────────────────────────────
 export const Services: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('all');
-  const [viewMode, setViewMode] = useState<'grid' | 'stack'>('grid');
-  const [stackResetKey, setStackResetKey] = useState<number>(0);
-  const [autoplay, setAutoplay] = useState<boolean>(false);
 
   const filteredServices = activeTab === 'all'
     ? ALL_SERVICES
     : ALL_SERVICES.filter((s) => s.category === activeTab);
-
-  // Memoized cards for InteractiveCardStack
-  const stackCards = useMemo(() => {
-    return filteredServices.map((service) => (
-      <div key={service.id} className="w-full h-full select-none">
-        <ServiceCardContent service={service} isStackCard={true} />
-      </div>
-    ));
-  }, [filteredServices]);
 
   return (
     <section id="services" className="py-16 sm:py-20 lg:py-28 relative z-20">
@@ -339,127 +306,38 @@ export const Services: React.FC = () => {
           </a>
         </div>
 
-        {/* Category Tabs & View Switcher Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-          {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 no-scrollbar touch-pan-x -mx-4 px-4 sm:mx-0 sm:px-0">
-            {TABS.map((tab) => {
-              const active = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 whitespace-nowrap shrink-0 flex items-center gap-2 ${
-                    active
-                      ? 'bg-pink text-white shadow-pinkGlow'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200'
-                  }`}
-                >
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* View Mode Switcher: Grid vs 3D Interactive Deck */}
-          <div className="flex items-center self-start sm:self-auto gap-1 p-1 bg-slate-100/90 rounded-2xl border border-slate-200 shrink-0 shadow-inner">
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                viewMode === 'grid'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-500 hover:text-slate-900'
-              }`}
-              title="Show standard grid layout"
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span>Grid View</span>
-            </button>
-            <button
-              onClick={() => setViewMode('stack')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                viewMode === 'stack'
-                  ? 'bg-pink text-white shadow-pinkGlow'
-                  : 'text-slate-500 hover:text-slate-900'
-              }`}
-              title="Switch to 3D interactive card deck"
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>3D Deck ({filteredServices.length})</span>
-            </button>
-          </div>
-        </div>
-
-        {/* View Mode Content */}
-        {viewMode === 'grid' ? (
-          /* Cards Grid */
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
-          >
-            {filteredServices.map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </motion.div>
-        ) : (
-          /* 3D Interactive Card Stack Showcase Stage */
-          <motion.div
-            key={`stack-${activeTab}`}
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-            className="flex flex-col items-center justify-center py-6 sm:py-10"
-          >
-            {/* Ambient card pedestal with glow */}
-            <div className="relative group w-full max-w-[340px] sm:max-w-[380px] h-[480px]">
-              <div className="absolute -inset-6 bg-gradient-to-tr from-pink/25 via-pink/10 to-amber-100/30 rounded-[36px] blur-2xl -z-10 pointer-events-none opacity-80" />
-              
-              <InteractiveCardStack
-                key={`${activeTab}-${stackResetKey}`}
-                cards={stackCards}
-                randomRotation={true}
-                sendToBackOnClick={true}
-                autoplay={autoplay}
-                autoplayDelay={3500}
-                pauseOnHover={true}
-                sensitivity={140}
-                className="w-full h-full"
-              />
-            </div>
-
-            {/* Stack Controls Bar */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        {/* Category Tabs */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 no-scrollbar touch-pan-x -mx-4 px-4 sm:mx-0 sm:px-0 mb-8">
+          {TABS.map((tab) => {
+            const active = activeTab === tab.id;
+            return (
               <button
-                onClick={() => setStackResetKey((prev) => prev + 1)}
-                className="btn-glass px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-sm"
-                title="Reset stack to initial order"
-              >
-                <RefreshCcw className="w-3.5 h-3.5 text-pink" />
-                <span>Reset Deck</span>
-              </button>
-
-              <button
-                onClick={() => setAutoplay(!autoplay)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 border transition-all ${
-                  autoplay
-                    ? 'bg-pink text-white border-pink shadow-pinkGlow'
-                    : 'bg-white text-slate-700 border-slate-200 hover:border-pink/40 shadow-sm'
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 whitespace-nowrap shrink-0 flex items-center gap-2 ${
+                  active
+                    ? 'bg-pink text-white shadow-pinkGlow'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200'
                 }`}
               >
-                {autoplay ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                <span>{autoplay ? 'Pause Cycle' : 'Auto Cycle'}</span>
+                <span>{tab.label}</span>
               </button>
+            );
+          })}
+        </div>
 
-              <div className="text-xs text-slate-500 font-medium px-3.5 py-2 rounded-full bg-slate-100 border border-slate-200 flex items-center gap-1.5">
-                <Hand className="w-3.5 h-3.5 text-pink" />
-                <span>Drag to flick or click top card to cycle</span>
-              </div>
-            </div>
-          </motion.div>
-        )}
+        {/* Cards Grid */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
+        >
+          {filteredServices.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
+        </motion.div>
 
         {/* Bottom CTA strip */}
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl   bg-slate-100/80 border border-slate-200 backdrop-blur-md">
