@@ -23,12 +23,24 @@ function MainApp() {
         className="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none"
         aria-hidden="true"
       >
+        {/* Mobile Background Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-center"
+          className="block md:hidden w-full h-full object-cover object-center"
+        >
+          <source src="/dubai vertical.mp4" type="video/mp4" />
+        </video>
+
+        {/* Desktop Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hidden md:block w-full h-full object-cover object-center"
         >
           <source src="/dubai.mp4" type="video/mp4" />
         </video>
