@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -16,6 +17,58 @@ import { StickyContact } from './components/StickyContact';
 import { FlightPath } from './components/FlightPath';
 
 function MainApp() {
+  const [isMobile, setIsMobile] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
+  );
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    setIsMobile(mq.matches);
+    mq.addEventListener('change', handleChange);
+    return () => mq.removeEventListener('change', handleChange);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Ensure mobile browsers (iOS Safari / Android Chrome) recognize muted + inline attributes
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const attemptPlay = () => {
+      video.play().catch(() => {
+        // Fallback if mobile OS defers autoplay until first interaction
+      });
+    };
+
+    attemptPlay();
+
+    const handleInteraction = () => {
+      if (video.paused) {
+        attemptPlay();
+      }
+    };
+
+    window.addEventListener('touchstart', handleInteraction, { passive: true, once: true });
+    window.addEventListener('scroll', handleInteraction, { passive: true, once: true });
+    window.addEventListener('click', handleInteraction, { passive: true, once: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('click', handleInteraction);
+    };
+  }, [isMobile]);
+
+  const videoSrc = isMobile ? '/dubai-vertical.mp4' : '/dubai.mp4';
+
   return (
     <div className="min-h-screen flex flex-col selection:bg-pink selection:text-white relative overflow-x-hidden text-white">
       {/* Single Continuous Fullscreen Background Video for Entire Website */}
@@ -23,27 +76,22 @@ function MainApp() {
         className="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none"
         aria-hidden="true"
       >
-        {/* Mobile Background Video */}
         <video
+          key={videoSrc}
+          ref={videoRef}
+          src={videoSrc}
+          poster={isMobile ? '/dubai-vertical-poster.jpg' : undefined}
           autoPlay
           loop
           muted
           playsInline
-          className="block md:hidden w-full h-full object-cover object-center"
-        >
-          <source src="/dubai vertical.mp4" type="video/mp4" />
-        </video>
-
-        {/* Desktop Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="hidden md:block w-full h-full object-cover object-center"
-        >
-          <source src="/dubai.mp4" type="video/mp4" />
-        </video>
+          preload="auto"
+          onCanPlay={(e) => {
+            e.currentTarget.muted = true;
+            e.currentTarget.play().catch(() => {});
+          }}
+          className="w-full h-full object-cover object-center"
+        />
         {/* Seamless cinematic dark shading across the entire viewport */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/60" />
       </div>
