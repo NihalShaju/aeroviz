@@ -9,14 +9,14 @@
   html {
     scroll-behavior: smooth;
     font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-    background-color: #ffffff;
-    color: #0f172a;
+    background-color: #02182b;
+    color: #ffffff;
   }
 
   body {
     min-height: 100vh;
-    background-color: #ffffff;
-    color: #0f172a;
+    background-color: transparent;
+    color: #ffffff;
   }
 
   #root {
@@ -25,14 +25,14 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', system-ui, -apple-system, sans-serif;
-    color: #022a44;
+    color: #ffffff;
   }
 }
 
 /* Form/select dropdown option colors */
 select option {
-  background-color: #ffffff;
-  color: #0f172a;
+  background-color: #0f172a;
+  color: #ffffff;
 }
 
 /* Custom scrollbar */

@@ -178,11 +178,7 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
     <motion.div
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ duration: 0.2 }}
-      className={`group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl border transition-all duration-300 h-full overflow-hidden ${
-        service.highlight
-          ? 'bg-white border-slate-200/80 hover:border-pink/40 shadow-sm'
-          : 'bg-white border-slate-200/80 hover:border-pink/40 hover:bg-pink-50/30 shadow-sm'
-      }`}
+      className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl border transition-all duration-300 h-full overflow-hidden glass border-white/15 hover:border-pink/50 shadow-xl"
     >
       {/* Background Image if present */}
       {service.image && (
@@ -192,8 +188,8 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
             alt={service.title}
             className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          {/* Dimming overlay (calibrated so image is 30% more visible while text stays crisp) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/40 to-white/65 backdrop-blur-[0.5px] transition-colors duration-300 group-hover:from-white/40 group-hover:via-white/35 group-hover:to-white/60" />
+          {/* Dark cinematic overlay so text stays crisp over card imagery */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/65 via-slate-950/55 to-slate-950/85 transition-colors duration-300 group-hover:from-slate-950/55 group-hover:via-slate-950/45 group-hover:to-slate-950/80" />
         </div>
       )}
 
@@ -202,11 +198,11 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
         <div>
           {/* Top Number & Badge Row */}
           <div className="flex items-center justify-between mb-3.5">
-            <span className="text-xs font-mono font-bold text-slate-600 bg-white/80 border border-slate-200/90 px-2 py-0.5 rounded-md backdrop-blur-sm shadow-xs">
+            <span className="text-xs font-mono font-bold text-white/85 bg-black/45 border border-white/20 px-2 py-0.5 rounded-md backdrop-blur-sm">
               #{service.id.toString().padStart(2, '0')}
             </span>
             {service.badge && (
-              <span className="text-[11px] font-bold text-pink bg-pink/15 px-2.5 py-0.5 rounded-full border border-pink/25 backdrop-blur-sm">
+              <span className="text-[11px] font-bold text-pink-200 bg-pink/25 px-2.5 py-0.5 rounded-full border border-pink/40 backdrop-blur-sm">
                 {service.badge}
               </span>
             )}
@@ -217,20 +213,20 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
             className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110 ${
               service.highlight
                 ? 'bg-pink text-white shadow-pinkGlow'
-                : 'text-pink bg-white/80 border border-pink/30 group-hover:bg-pink group-hover:text-white backdrop-blur-sm shadow-xs'
+                : 'text-pink-300 bg-black/45 border border-pink/40 group-hover:bg-pink group-hover:text-white backdrop-blur-sm'
             }`}
           >
             <Icon className="w-6 h-6" />
           </div>
 
           {/* Text */}
-          <h3 className="text-lg font-heading font-bold text-slate-900 mb-2 leading-snug group-hover:text-pink transition-colors">
+          <h3 className="text-lg font-heading font-bold text-white mb-2 leading-snug group-hover:text-pink-300 transition-colors drop-shadow">
             {service.title}
           </h3>
-          <p className={`text-sm leading-relaxed mb-4 ${service.image ? 'text-white font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]' : 'text-slate-600'}`}>{service.desc}</p>
+          <p className="text-sm leading-relaxed mb-4 text-white/85 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">{service.desc}</p>
           {service.feature && (
-            <div className="inline-flex items-center gap-1.5 text-xs text-slate-800 bg-white/85 px-2.5 py-1 rounded-lg border border-slate-200/90 mb-2 backdrop-blur-sm shadow-xs">
-              <CheckCircle2 className="w-3.5 h-3.5 text-pink shrink-0" />
+            <div className="inline-flex items-center gap-1.5 text-xs text-white/95 bg-black/45 px-2.5 py-1 rounded-lg border border-white/20 mb-2 backdrop-blur-sm">
+              <CheckCircle2 className="w-3.5 h-3.5 text-pink-300 shrink-0" />
               <span>{service.feature}</span>
             </div>
           )}
@@ -241,11 +237,11 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 pt-3 border-t border-slate-300/80 inline-flex items-center justify-between text-xs font-bold text-pink hover:text-pink-700 transition-colors group-hover:translate-x-0.5"
+          className="mt-4 pt-3 border-t border-white/20 inline-flex items-center justify-between text-xs font-bold text-pink-300 hover:text-white transition-colors group-hover:translate-x-0.5"
           aria-label={`Ask about ${service.title} on WhatsApp`}
         >
           <span>Enquire on WhatsApp</span>
-          <ArrowRight className="w-4 h-4 text-pink group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-pink-300 group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
     </motion.div>
@@ -266,32 +262,32 @@ export const Services: React.FC = () => {
 
         {/* Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full    bg-pink/10 border-pink/20 text-pink-700 font-semibold text-xs mb-4 backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-pink" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-pink-300 font-semibold text-xs mb-4 backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-pink-300" />
             <span>Complete Services Portfolio</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold  text-slate-900 tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight mb-4 drop-shadow-lg">
             All 12 Services Provided by <br />
-            <span className="text-pink">Aeroviz Travel & Tourism</span>
+            <span className="text-pink-300">Aeroviz Travel &amp; Tourism</span>
           </h2>
-          <p className=" text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-white/85 text-base sm:text-lg leading-relaxed drop-shadow">
             From UAE tourist visas and status change trips to private farm stays, yacht charters, desert safaris, and flight tickets to every country — explore our complete range below.
           </p>
         </div>
 
         {/* Highlight Banner: Flight Tickets to Every Country */}
-        <div className="mb-10 p-4 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mb-10 p-4 sm:p-6 rounded-2xl glass border border-white/15 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-12 rounded-xl bg-pink text-white flex items-center justify-center shrink-0 shadow-pinkGlow">
               <Globe2 className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-base sm:text-lg font-heading font-bold  text-slate-900 flex items-center gap-2">
+              <h4 className="text-base sm:text-lg font-heading font-bold text-white flex items-center gap-2">
                 <span>Flight Tickets to Every Country</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-pink bg-pink/20 border border-pink/30 px-2 py-0.5 rounded-full">Worldwide</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-pink-200 bg-pink/25 border border-pink/40 px-2 py-0.5 rounded-full">Worldwide</span>
               </h4>
-              <p className="text-xs sm:text-sm  text-slate-600 mt-0.5">
-                Aeroviz helps with booking flight tickets to any country across 500+ international airlines. Best route connections & confirmed live fares.
+              <p className="text-xs sm:text-sm text-white/80 mt-0.5">
+                Aeroviz helps with booking flight tickets to any country across 500+ international airlines. Best route connections &amp; confirmed live fares.
               </p>
             </div>
           </div>
@@ -317,7 +313,7 @@ export const Services: React.FC = () => {
                 className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 whitespace-nowrap shrink-0 flex items-center gap-2 ${
                   active
                     ? 'bg-pink text-white shadow-pinkGlow'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200'
+                    : 'bg-black/40 text-white/80 hover:bg-white/15 hover:text-white border border-white/20 backdrop-blur-md'
                 }`}
               >
                 <span>{tab.label}</span>
@@ -340,10 +336,10 @@ export const Services: React.FC = () => {
         </motion.div>
 
         {/* Bottom CTA strip */}
-        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl   bg-slate-100/80 border border-slate-200 backdrop-blur-md">
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl glass border border-white/15 backdrop-blur-xl">
           <div>
-            <p className=" text-slate-900 font-heading font-bold text-lg sm:text-xl">Looking for a custom travel or visa service?</p>
-            <p className=" text-slate-600 text-sm mt-1">Talk directly with our Dubai travel desk — we answer all questions within minutes.</p>
+            <p className="text-white font-heading font-bold text-lg sm:text-xl">Looking for a custom travel or visa service?</p>
+            <p className="text-white/80 text-sm mt-1">Talk directly with our Dubai travel desk — we answer all questions within minutes.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             {/* WhatsApp Desk 1 */}

@@ -41,10 +41,10 @@ export const FAQ: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full    bg-pink-50 border border-pink-200 text-pink-700 font-semibold text-xs mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-pink-300 font-semibold text-xs mb-3 backdrop-blur-md">
             <span>Clear Answers</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold  text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight drop-shadow-lg">
             Questions people ask first.
           </h2>
         </div>
@@ -56,7 +56,7 @@ export const FAQ: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="glass glass--tile overflow-hidden shadow-xl   bg-white border border-slate-200 transition-all duration-200"
+                className="glass glass--tile overflow-hidden shadow-xl border border-white/15 transition-all duration-200"
               >
                 <button
                   type="button"
@@ -64,13 +64,13 @@ export const FAQ: React.FC = () => {
                   aria-expanded={isOpen}
                   className="w-full p-6 sm:p-7 text-start flex items-center justify-between gap-4 focus-visible:outline-pink"
                 >
-                  <span className="text-base sm:text-lg font-heading font-bold  text-slate-900">
+                  <span className="text-base sm:text-lg font-heading font-bold text-white">
                     {faq.q}
                   </span>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                     isOpen 
                       ? 'bg-pink text-white shadow-pinkGlow' 
-                      : '  bg-slate-100 text-slate-700'
+                      : 'bg-white/10 text-white/80 border border-white/15'
                   }`}>
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
@@ -85,7 +85,7 @@ export const FAQ: React.FC = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
-                      <div className="px-6 sm:px-7 pb-6 pt-1 text-sm sm:text-base  text-slate-600 leading-relaxed border-t  border-slate-200 font-normal">
+                      <div className="px-6 sm:px-7 pb-6 pt-1 text-sm sm:text-base text-white/85 leading-relaxed border-t border-white/15 font-normal">
                         {faq.a}
                       </div>
                     </motion.div>

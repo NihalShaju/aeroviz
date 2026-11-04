@@ -51,14 +51,14 @@ export const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full    bg-pink/10 border-pink/20 text-pink-700 font-semibold text-xs mb-3 backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-pink" />
-            <span>Direct Support Desk & Flight Bookings</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-pink-300 font-semibold text-xs mb-3 backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-pink-300" />
+            <span>Direct Support Desk &amp; Flight Bookings</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold  text-slate-900 tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight mb-4 drop-shadow-lg">
             Talk to the Aeroviz team.
           </h2>
-          <p className="text-base sm:text-lg  text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-white/85 leading-relaxed drop-shadow">
             Call or message either number. We confirm flight fares to every country and verify visa documents on WhatsApp.
           </p>
         </div>
@@ -71,23 +71,23 @@ export const Contact: React.FC = () => {
               {CONTACT.phones.map((phone, idx) => (
                 <div 
                   key={idx} 
-                  className="glass glass--tile p-6 flex flex-col justify-between shadow-md   bg-white border-slate-200/80"
+                  className="glass glass--tile p-6 flex flex-col justify-between shadow-xl border-white/15"
                 >
                   <div>
-                    <span className="text-xs font-semibold  text-slate-500 block mb-1">
+                    <span className="text-xs font-semibold text-white/65 block mb-1">
                       Desk Line {idx + 1}
                     </span>
-                    <h3 className="text-lg font-heading font-bold  text-slate-900 tabular-nums mb-6">
+                    <h3 className="text-lg font-heading font-bold text-white tabular-nums mb-6">
                       {phone.display}
                     </h3>
                   </div>
 
-                  <div className="flex flex-col gap-2 pt-3 border-t  border-slate-200">
+                  <div className="flex flex-col gap-2 pt-3 border-t border-white/15">
                     <a
                       href={`tel:${phone.tel}`}
-                      className="btn-glass py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2  text-slate-800  bg-slate-100 border border-slate-200 hover:bg-slate-200"
+                      className="btn-glass py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 text-white bg-white/10 border border-white/20 hover:bg-white/20"
                     >
-                      <Phone className="w-3.5 h-3.5 text-pink" />
+                      <Phone className="w-3.5 h-3.5 text-pink-300" />
                       <span>Call Now</span>
                     </a>
                     <a
@@ -107,21 +107,21 @@ export const Contact: React.FC = () => {
             {/* Real Office Address & Business Details from Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Office Address */}
-              <div className="glass glass--tile p-6 shadow-md   bg-white border-slate-200/80">
-                <div className="flex items-center gap-2  text-slate-900 font-bold text-sm mb-2">
-                  <MapPin className="w-4 h-4 text-pink" />
+              <div className="glass glass--tile p-6 shadow-xl border-white/15">
+                <div className="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                  <MapPin className="w-4 h-4 text-pink-300" />
                   <span>Dubai Office Location</span>
                 </div>
-                <p className="text-xs sm:text-sm font-semibold    text-slate-800 bg-slate-100 border border-slate-200 p-3.5 rounded-xl leading-relaxed">
+                <p className="text-xs sm:text-sm font-semibold text-white/90 bg-white/10 border border-white/15 p-3.5 rounded-xl leading-relaxed">
                   {CONTACT.address}
                 </p>
-                <div className="mt-3 flex items-center justify-between text-xs  text-slate-500">
+                <div className="mt-3 flex items-center justify-between text-xs text-white/65">
                   <span>{CONTACT.shortAddress}</span>
                   <a
                     href="https://maps.google.com/?q=Al+Qusais+2+Dubai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-pink hover:underline font-semibold"
+                    className="text-pink-300 hover:underline font-semibold"
                   >
                     View map →
                   </a>
@@ -129,25 +129,25 @@ export const Contact: React.FC = () => {
               </div>
 
               {/* Email & Team Contacts */}
-              <div className="glass glass--tile p-6 shadow-md   bg-white border-slate-200/80 flex flex-col justify-between">
+              <div className="glass glass--tile p-6 shadow-xl border-white/15 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2  text-slate-900 font-bold text-sm mb-2">
-                    <Clock className="w-4 h-4 text-pink" />
-                    <span>Support & Email</span>
+                  <div className="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                    <Clock className="w-4 h-4 text-pink-300" />
+                    <span>Support &amp; Email</span>
                   </div>
                   <a
                     href={`mailto:${CONTACT.email}`}
-                    className="text-xs sm:text-sm font-semibold text-pink hover:underline   bg-slate-100 border border-slate-200 p-3.5 rounded-xl block mb-3 break-all"
+                    className="text-xs sm:text-sm font-semibold text-pink-300 hover:underline bg-white/10 border border-white/15 p-3.5 rounded-xl block mb-3 break-all"
                   >
                     {CONTACT.email}
                   </a>
                 </div>
 
-                <div className="space-y-1.5 pt-2 border-t  border-slate-200 text-xs">
+                <div className="space-y-1.5 pt-2 border-t border-white/15 text-xs">
                   {CONTACT.team.map((m, idx) => (
                     <div key={idx} className="flex items-center justify-between">
-                      <span className="font-bold  text-slate-800">{m.name}</span>
-                      <span className="text-pink text-[11px] font-medium">{m.role}</span>
+                      <span className="font-bold text-white/90">{m.name}</span>
+                      <span className="text-pink-300 text-[11px] font-medium">{m.role}</span>
                     </div>
                   ))}
                 </div>
@@ -157,19 +157,19 @@ export const Contact: React.FC = () => {
 
           {/* Right Column: Interactive WhatsApp Enquiry Form with Flight Options */}
           <div className="lg:col-span-6">
-            <div className="glass glass--panel p-6 sm:p-9 shadow-xl   bg-white border border-slate-200/80 backdrop-blur-2xl">
-              <h3 className="text-xl sm:text-2xl font-heading font-bold  text-slate-900 mb-2">
-                Quick Enquiry & Flight Quotes
+            <div className="glass glass--panel p-6 sm:p-9 shadow-2xl border border-white/15 backdrop-blur-2xl">
+              <h3 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">
+                Quick Enquiry &amp; Flight Quotes
               </h3>
-              <p className="text-xs sm:text-sm  text-slate-600 mb-6">
+              <p className="text-xs sm:text-sm text-white/80 mb-6">
                 Tell us what you need and we will generate instant live quotes on WhatsApp.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-name" className="block text-xs font-semibold  text-slate-700 mb-1.5">
-                      Your name <span className="text-pink">*</span>
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-white/85 mb-1.5">
+                      Your name <span className="text-pink-300">*</span>
                     </label>
                     <input
                       id="contact-name"
@@ -180,12 +180,12 @@ export const Contact: React.FC = () => {
                         if (formError) setFormError('');
                       }}
                       placeholder="e.g. Tariq Khan"
-                      className="w-full px-4 py-2.5 rounded-2xl    :text-white/40 bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner"
+                      className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="contact-phone" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+                    <label htmlFor="contact-phone" className="block text-xs font-semibold text-white/85 mb-1.5">
                       Phone number (optional)
                     </label>
                     <input
@@ -194,51 +194,51 @@ export const Contact: React.FC = () => {
                       value={phoneInput}
                       onChange={(e) => setPhoneInput(e.target.value)}
                       placeholder="e.g. +971 50 000 0000"
-                      className="w-full px-4 py-2.5 rounded-2xl    :text-white/40 bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner tabular-nums"
+                      className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all tabular-nums"
                     />
                   </div>
                 </div>
 
                 {/* What do you need? Section */}
                 <div>
-                  <label htmlFor="contact-service" className="block text-xs font-semibold  text-slate-700 mb-1.5">
-                    What do you need? <span className="text-pink">*</span>
+                  <label htmlFor="contact-service" className="block text-xs font-semibold text-white/85 mb-1.5">
+                    What do you need? <span className="text-pink-300">*</span>
                   </label>
                   <select
                     id="contact-service"
                     value={service}
                     onChange={(e) => handleServiceChange(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
+                    className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all cursor-pointer"
                   >
-                    <option value="7. Flight Tickets to Every Country" className="  bg-white text-slate-900">✈️ 7. Flight Tickets to Every Country (Worldwide)</option>
-                    <option value="1. Tourist Visa (30/60 Days)" className="  bg-white text-slate-900">1. Tourist Visa (30/60 Days)</option>
-                    <option value="2. Visa Change by Flight & Bus" className="  bg-white text-slate-900">2. Visa Change by Flight and Bus</option>
-                    <option value="3. Single / Multiple Entry Visa" className="  bg-white text-slate-900">3. Single / Multiple Entry Visa</option>
-                    <option value="4. Family Visa Sponsorship" className="  bg-white text-slate-900">4. Family Visa</option>
-                    <option value="5. 2-Year Residence Visa" className="  bg-white text-slate-900">5. 2 Years Residence Visa</option>
-                    <option value="6. Tour Packages" className="  bg-white text-slate-900">6. Tour Packages</option>
-                    <option value="8. Farm Stay Retreat" className="  bg-white text-slate-900">🏡 8. Farm Stay Retreat (Private Villas & Pools)</option>
-                    <option value="9. Desert Safari Adventure" className="  bg-white text-slate-900">9. Desert Safari</option>
-                    <option value="10. City Tours" className="  bg-white text-slate-900">10. City Tours (Dubai & Abu Dhabi)</option>
-                    <option value="11. Yacht Services" className="  bg-white text-slate-900">11. Yacht Services (Dubai Marina)</option>
-                    <option value="12. Hajj & Umrah Services" className="  bg-white text-slate-900">12. Hajj / Umrah Services</option>
+                    <option value="7. Flight Tickets to Every Country" className="bg-slate-900 text-white">✈️ 7. Flight Tickets to Every Country (Worldwide)</option>
+                    <option value="1. Tourist Visa (30/60 Days)" className="bg-slate-900 text-white">1. Tourist Visa (30/60 Days)</option>
+                    <option value="2. Visa Change by Flight & Bus" className="bg-slate-900 text-white">2. Visa Change by Flight and Bus</option>
+                    <option value="3. Single / Multiple Entry Visa" className="bg-slate-900 text-white">3. Single / Multiple Entry Visa</option>
+                    <option value="4. Family Visa Sponsorship" className="bg-slate-900 text-white">4. Family Visa</option>
+                    <option value="5. 2-Year Residence Visa" className="bg-slate-900 text-white">5. 2 Years Residence Visa</option>
+                    <option value="6. Tour Packages" className="bg-slate-900 text-white">6. Tour Packages</option>
+                    <option value="8. Farm Stay Retreat" className="bg-slate-900 text-white">🏡 8. Farm Stay Retreat (Private Villas &amp; Pools)</option>
+                    <option value="9. Desert Safari Adventure" className="bg-slate-900 text-white">9. Desert Safari</option>
+                    <option value="10. City Tours" className="bg-slate-900 text-white">10. City Tours (Dubai &amp; Abu Dhabi)</option>
+                    <option value="11. Yacht Services" className="bg-slate-900 text-white">11. Yacht Services (Dubai Marina)</option>
+                    <option value="12. Hajj & Umrah Services" className="bg-slate-900 text-white">12. Hajj / Umrah Services</option>
                   </select>
                 </div>
 
                 {/* Additional Flight Details (Shown when Flight is selected) */}
                 {isFlight && (
-                  <div className="p-3.5 rounded-2xl  bg-pink-50/50 border border-pink/30 space-y-3">
-                    <div className="flex items-center justify-between text-xs text-pink font-semibold">
+                  <div className="p-3.5 rounded-2xl bg-pink/15 border border-pink/35 space-y-3">
+                    <div className="flex items-center justify-between text-xs text-pink-200 font-semibold">
                       <span className="flex items-center gap-1.5">
                         <Plane className="w-3.5 h-3.5 rotate-45" />
                         Flight Customization
                       </span>
-                      <span className="text-[10px]  text-slate-500">500+ Airlines</span>
+                      <span className="text-[10px] text-white/70">500+ Airlines</span>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-[11px] font-semibold  text-slate-700 mb-1">
+                        <label className="block text-[11px] font-semibold text-white/85 mb-1">
                           From (Departure)
                         </label>
                         <input
@@ -246,12 +246,12 @@ export const Contact: React.FC = () => {
                           value={flightFrom}
                           onChange={(e) => setFlightFrom(e.target.value)}
                           placeholder="e.g. Dubai (DXB)"
-                          className="w-full px-3 py-2 rounded-xl    :text-white/40 bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs focus:border-pink focus:outline-none"
+                          className="w-full px-3 py-2 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-xs focus:border-pink focus:outline-none"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] font-semibold  text-slate-700 mb-1">
+                        <label className="block text-[11px] font-semibold text-white/85 mb-1">
                           To (Destination Country / City)
                         </label>
                         <input
@@ -259,14 +259,14 @@ export const Contact: React.FC = () => {
                           value={flightTo}
                           onChange={(e) => setFlightTo(e.target.value)}
                           placeholder="e.g. London, Riyadh, Karachi, Bangkok..."
-                          className="w-full px-3 py-2 rounded-xl    :text-white/40 bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs focus:border-pink focus:outline-none"
+                          className="w-full px-3 py-2 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-xs focus:border-pink focus:outline-none"
                         />
                       </div>
                     </div>
 
                     {/* Quick Popular Country Buttons */}
                     <div>
-                      <span className="block text-[10px]  text-slate-500 mb-1 font-medium">
+                      <span className="block text-[10px] text-white/70 mb-1 font-medium">
                         Quick Popular Destinations:
                       </span>
                       <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
@@ -275,7 +275,7 @@ export const Contact: React.FC = () => {
                             key={c.name}
                             type="button"
                             onClick={() => setFlightTo(`${c.name} (${c.airportCode?.split(' ')[0] || c.code})`)}
-                            className="px-2.5 py-1 rounded-lg  :bg-pink/20  bg-white hover:bg-pink-100 text-slate-700 hover:text-pink text-[11px] whitespace-nowrap transition-all border  border-slate-200 shrink-0"
+                            className="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-pink/30 text-white/90 hover:text-white text-[11px] whitespace-nowrap transition-all border border-white/15 shrink-0"
                           >
                             <span>{c.flag} {c.name.split(' ')[0]}</span>
                           </button>
@@ -285,41 +285,41 @@ export const Contact: React.FC = () => {
 
                     <div className="grid grid-cols-3 gap-2">
                       <div>
-                        <label className="block text-[10px] font-semibold  text-slate-700 mb-1">Type</label>
+                        <label className="block text-[10px] font-semibold text-white/85 mb-1">Type</label>
                         <select
                           value={tripType}
                           onChange={(e) => setTripType(e.target.value)}
-                          className="w-full px-2 py-1.5 rounded-lg    bg-white border border-slate-200 text-slate-900 text-xs focus:border-pink focus:outline-none cursor-pointer"
+                          className="w-full px-2 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-xs focus:border-pink focus:outline-none cursor-pointer"
                         >
-                          <option value="Round-trip">Round-trip</option>
-                          <option value="One-way">One-way</option>
-                          <option value="Multi-city">Multi-city</option>
+                          <option value="Round-trip" className="bg-slate-900 text-white">Round-trip</option>
+                          <option value="One-way" className="bg-slate-900 text-white">One-way</option>
+                          <option value="Multi-city" className="bg-slate-900 text-white">Multi-city</option>
                         </select>
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-semibold  text-slate-700 mb-1">Class</label>
+                        <label className="block text-[10px] font-semibold text-white/85 mb-1">Class</label>
                         <select
                           value={flightClass}
                           onChange={(e) => setFlightClass(e.target.value)}
-                          className="w-full px-2 py-1.5 rounded-lg    bg-white border border-slate-200 text-slate-900 text-xs focus:border-pink focus:outline-none cursor-pointer"
+                          className="w-full px-2 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-xs focus:border-pink focus:outline-none cursor-pointer"
                         >
-                          <option value="Economy">Economy</option>
-                          <option value="Premium Economy">Premium</option>
-                          <option value="Business Class">Business</option>
-                          <option value="First Class">First Class</option>
+                          <option value="Economy" className="bg-slate-900 text-white">Economy</option>
+                          <option value="Premium Economy" className="bg-slate-900 text-white">Premium</option>
+                          <option value="Business Class" className="bg-slate-900 text-white">Business</option>
+                          <option value="First Class" className="bg-slate-900 text-white">First Class</option>
                         </select>
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-semibold  text-slate-700 mb-1">Passengers</label>
+                        <label className="block text-[10px] font-semibold text-white/85 mb-1">Passengers</label>
                         <input
                           type="number"
                           min={1}
                           max={20}
                           value={passengers}
                           onChange={(e) => setPassengers(parseInt(e.target.value) || 1)}
-                          className="w-full px-2 py-1.5 rounded-lg    bg-white border border-slate-200 text-slate-900 text-xs focus:border-pink focus:outline-none"
+                          className="w-full px-2 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-xs focus:border-pink focus:outline-none"
                         />
                       </div>
                     </div>
@@ -327,7 +327,7 @@ export const Contact: React.FC = () => {
                 )}
 
                 <div>
-                  <label htmlFor="contact-message" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-white/85 mb-1.5">
                     Dates or additional requests?
                   </label>
                   <textarea
@@ -336,12 +336,12 @@ export const Contact: React.FC = () => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell us your travel dates, preferred airline, or specific requirements..."
-                    className="w-full px-4 py-2 rounded-2xl    :text-white/40 bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner resize-none"
+                    className="w-full px-4 py-2 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-base sm:text-sm font-medium focus:border-pink focus:outline-none transition-all resize-none"
                   />
                 </div>
 
                 {formError && (
-                  <div className="flex items-center gap-2 text-pink text-xs font-semibold bg-pink-500/10 p-2.5 rounded-xl border border-pink/30">
+                  <div className="flex items-center gap-2 text-pink-200 text-xs font-semibold bg-pink-500/20 p-2.5 rounded-xl border border-pink/40">
                     <AlertCircle className="w-4 h-4 shrink-0" />
                     <span>{formError}</span>
                   </div>

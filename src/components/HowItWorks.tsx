@@ -35,10 +35,10 @@ export const HowItWorks: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full    bg-pink-50 border border-pink-200 text-pink-700 font-semibold text-xs mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-pink-300 font-semibold text-xs mb-3 backdrop-blur-md">
             <span>Simple 4-Step Process</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold  text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight drop-shadow-lg">
             Four steps from message to visa.
           </h2>
         </div>
@@ -46,7 +46,7 @@ export const HowItWorks: React.FC = () => {
         {/* Timeline Grid */}
         <div className="relative">
           {/* Vertical Connecting Line */}
-          <div className="hidden md:block absolute left-1/2 top-8 bottom-8 w-0.5  bg-slate-200 -translate-x-1/2">
+          <div className="hidden md:block absolute left-1/2 top-8 bottom-8 w-0.5 bg-white/20 -translate-x-1/2">
             <motion.div
               className="w-full bg-pink origin-top shadow-pinkGlow"
               initial={{ height: 0 }}
@@ -70,23 +70,23 @@ export const HowItWorks: React.FC = () => {
                 >
                   {/* Step Card */}
                   <div className="w-full md:w-1/2">
-                    <div className="glass glass--tile p-6 sm:p-8   bg-white border border-slate-200 shadow-xl transition-transform hover:-translate-y-1 duration-200">
+                    <div className="glass glass--tile p-6 sm:p-8 border border-white/15 shadow-xl transition-transform hover:-translate-y-1 duration-200">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="w-8 h-8 rounded-full bg-pink text-white font-heading font-bold text-sm flex items-center justify-center shadow-pinkGlow">
                           {step.num}
                         </span>
-                        <h3 className="text-xl font-heading font-bold  text-slate-900">
+                        <h3 className="text-xl font-heading font-bold text-white">
                           {step.title}
                         </h3>
                       </div>
-                      <p className="text-base  text-slate-600 leading-relaxed font-normal">
+                      <p className="text-base text-white/80 leading-relaxed font-normal">
                         {step.desc}
                       </p>
                     </div>
                   </div>
 
                   {/* Center Node Icon */}
-                  <div className="relative z-10 hidden md:flex items-center justify-center w-14 h-14 rounded-2xl  bg-white border-2 border-pink text-pink shadow-pinkGlow shrink-0">
+                  <div className="relative z-10 hidden md:flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-950/80 backdrop-blur-xl border-2 border-pink text-pink-300 shadow-pinkGlow shrink-0">
                     <Icon className="w-6 h-6" />
                   </div>
 

@@ -104,21 +104,21 @@ export const VisaExplainer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full    bg-pink/10 border-pink/20 text-pink-700 font-semibold text-xs mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-pink" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-pink-300 font-semibold text-xs mb-3 backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-pink-300" />
             <span>Multiple Visa Validity Options</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold  text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight drop-shadow-lg">
             Pick the visa validity that fits your trip.
           </h2>
-          <p className="text-base sm:text-lg  text-slate-600 mt-3">
+          <p className="text-base sm:text-lg text-white/85 mt-3 drop-shadow">
             From quick 30-day single entry permits to 60-day multiple entries and inside-country status changes.
           </p>
         </div>
 
         {/* Horizontal Visa Category Selector Chips */}
         <div className="flex justify-start sm:justify-center mb-10 overflow-x-auto pb-3 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 touch-pan-x">
-          <div className="inline-flex p-1.5   bg-slate-100 border-slate-200 rounded-2xl border gap-1.5 shadow-md shrink-0">
+          <div className="inline-flex p-1.5 bg-black/45 border-white/20 backdrop-blur-xl rounded-2xl border gap-1.5 shadow-xl shrink-0">
             {[
               { key: '30-single', label: '30 Days Single' },
               { key: '30-multi', label: '30 Days Multi' },
@@ -137,7 +137,7 @@ export const VisaExplainer: React.FC = () => {
                   className={`relative px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap focus-visible:outline-pink ${
                     isActive 
                       ? 'text-white' 
-                      : ' :text-white :bg-white/5 text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                      : 'text-white/75 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {isActive && (
@@ -155,7 +155,7 @@ export const VisaExplainer: React.FC = () => {
         </div>
 
         {/* Dynamic Detail Panel */}
-        <div className="glass glass--panel p-6 sm:p-10 shadow-xl   bg-white border-slate-200/80 backdrop-blur-2xl">
+        <div className="glass glass--panel p-6 sm:p-10 shadow-2xl border border-white/15 backdrop-blur-2xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.id}
@@ -168,80 +168,80 @@ export const VisaExplainer: React.FC = () => {
               {/* Left Column: What it is & Suits & Documents */}
               <div className="lg:col-span-7 space-y-6">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink/20 text-pink text-xs font-bold mb-3 border border-pink/30 shadow-sm">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink/25 text-pink-200 text-xs font-bold mb-3 border border-pink/40 shadow-sm">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>{current.badge}</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-heading font-bold  text-slate-900 mb-3">
+                  <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-3">
                     {current.name}
                   </h3>
-                  <p className="text-base sm:text-lg  text-slate-600 leading-relaxed font-normal">
+                  <p className="text-base sm:text-lg text-white/85 leading-relaxed font-normal">
                     {current.summary}
                   </p>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl   bg-slate-50 border border-slate-200 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-pink uppercase tracking-wider">
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/10 border border-white/15 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-pink-300 uppercase tracking-wider">
                     <UserCheck className="w-4 h-4" />
                     <span>Who it suits</span>
                   </div>
-                  <p className="text-sm  text-slate-800 font-medium">
+                  <p className="text-sm text-white/90 font-medium">
                     {current.suits}
                   </p>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl   bg-slate-50 border border-slate-200 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-pink uppercase tracking-wider">
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/10 border border-white/15 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-pink-300 uppercase tracking-wider">
                     <FileText className="w-4 h-4" />
                     <span>Documents we usually need</span>
                   </div>
-                  <p className="text-sm  text-slate-800 font-medium">
+                  <p className="text-sm text-white/90 font-medium">
                     {current.documents}
                   </p>
                 </div>
               </div>
 
               {/* Right Column: Validity, Stay Duration, Processing & WhatsApp Button */}
-              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 rounded-3xl   bg-slate-50 border border-slate-200 space-y-6 shadow-md">
+              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-white/10 border border-white/15 space-y-6 shadow-xl">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-pink/20 flex items-center justify-center text-pink shadow-sm shrink-0 border border-pink/30">
+                    <div className="w-10 h-10 rounded-xl bg-pink/25 flex items-center justify-center text-pink-300 shadow-sm shrink-0 border border-pink/40">
                       <Calendar className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-xs  text-slate-500 font-semibold block">Stay Duration</span>
-                      <span className="text-sm font-heading font-bold  text-slate-900 block">
+                      <span className="text-xs text-white/65 font-semibold block">Stay Duration</span>
+                      <span className="text-sm font-heading font-bold text-white block">
                         {current.stayDuration}
                       </span>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl   bg-pink/10 border border-pink/20 flex items-center justify-center text-pink shadow-sm shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-pink/20 border border-pink/35 flex items-center justify-center text-pink-300 shadow-sm shrink-0">
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-xs  text-slate-500 font-semibold block">Typical Validity Period</span>
-                      <span className="text-sm font-heading font-bold  text-slate-900 block">
+                      <span className="text-xs text-white/65 font-semibold block">Typical Validity Period</span>
+                      <span className="text-sm font-heading font-bold text-white block">
                         {current.validity}
                       </span>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl   bg-pink/10 border border-pink/20 flex items-center justify-center text-pink shadow-sm shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-pink/20 border border-pink/35 flex items-center justify-center text-pink-300 shadow-sm shrink-0">
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-xs  text-slate-500 font-semibold block">Typical Processing Time</span>
-                      <span className="text-sm font-heading font-bold  text-slate-900 block">
+                      <span className="text-xs text-white/65 font-semibold block">Typical Processing Time</span>
+                      <span className="text-sm font-heading font-bold text-white block">
                         {current.processing}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t  border-slate-200">
+                <div className="pt-4 border-t border-white/15">
                   <a
                     href={createServiceWhatsAppUrl(current.name)}
                     target="_blank"

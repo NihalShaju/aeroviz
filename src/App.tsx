@@ -17,7 +17,25 @@ import { FlightPath } from './components/FlightPath';
 
 function MainApp() {
   return (
-    <div className="min-h-screen flex flex-col selection:bg-pink-100 selection:text-pink-700 relative overflow-x-hidden bg-white text-slate-900">
+    <div className="min-h-screen flex flex-col selection:bg-pink selection:text-white relative overflow-x-hidden text-white">
+      {/* Single Continuous Fullscreen Background Video for Entire Website */}
+      <div 
+        className="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-center"
+        >
+          <source src="/dubai.mp4" type="video/mp4" />
+        </video>
+        {/* Seamless cinematic dark shading across the entire viewport */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/60" />
+      </div>
+
       {/* Accessibility Skip Link */}
       <a 
         href="#main-content" 
@@ -26,14 +44,14 @@ function MainApp() {
         Skip to main content
       </a>
 
-      {/* Floating Navbar */}
+      {/* Top Navigation */}
       <Navbar />
 
       {/* Scroll-Linked Flight Path on Desktop */}
       <FlightPath />
 
       {/* Main Content Sections */}
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 relative z-10">
         <Hero />
         <TrustStrip />
         <Services />

@@ -35,14 +35,14 @@ export const StickyContact: React.FC = () => {
 
       {/* Mobile Bottom Fixed Bar */}
       <div 
-        className="md:hidden fixed bottom-0 inset-x-0 z-50 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] glass   border-t border-slate-200 shadow-2xl  bg-white/95 backdrop-blur-2xl"
+        className="md:hidden fixed bottom-0 inset-x-0 z-50 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] glass border-t border-white/15 shadow-2xl bg-slate-950/90 backdrop-blur-2xl"
       >
         <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
           <a
             href={`tel:${primaryPhone.tel}`}
-            className="  bg-slate-100 text-slate-800 border border-slate-200 hover:bg-slate-200 py-3 rounded-2xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm transition-all"
+            className="bg-white/10 text-white border border-white/20 hover:bg-white/20 py-3 rounded-2xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm transition-all"
           >
-            <Phone className="w-4 h-4 text-pink" />
+            <Phone className="w-4 h-4 text-pink-300" />
             <span>Call Desk</span>
           </a>
 
@@ -94,12 +94,12 @@ export const StickyContact: React.FC = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute bottom-16 right-0 w-72 glass-dark rounded-3xl p-5 shadow-2xl  border-slate-200 mb-2 backdrop-blur-2xl  bg-white"
+                className="absolute bottom-16 right-0 w-72 glass-dark rounded-3xl p-5 shadow-2xl border border-white/20 mb-2 backdrop-blur-2xl"
               >
-                <div className="flex items-center justify-between mb-3 pb-2 border-b  border-slate-200">
+                <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/15">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-xs font-bold  text-slate-900">WhatsApp Support Online</span>
+                    <span className="text-xs font-bold text-white">WhatsApp Support Online</span>
                   </div>
                 </div>
 
@@ -110,15 +110,15 @@ export const StickyContact: React.FC = () => {
                       href={waLink("Hi Aeroviz, I need assistance.", phone.wa)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl  :bg-white/15  bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-pink/40 flex items-center justify-between transition-colors group"
+                      className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 hover:border-pink/50 flex items-center justify-between transition-colors group"
                     >
                       <div className="flex flex-col">
-                        <span className="text-[10px]  text-slate-500 font-medium">Desk {idx + 1}</span>
-                        <span className="text-xs font-bold  text-slate-900 group-hover:text-pink transition-colors tabular-nums">
+                        <span className="text-[10px] text-white/60 font-medium">Desk {idx + 1}</span>
+                        <span className="text-xs font-bold text-white group-hover:text-pink-300 transition-colors tabular-nums">
                           {phone.display}
                         </span>
                       </div>
-                      <MessageCircle className="w-4 h-4 text-pink shrink-0" />
+                      <MessageCircle className="w-4 h-4 text-pink-300 shrink-0" />
                     </a>
                   ))}
                 </div>

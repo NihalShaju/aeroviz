@@ -11,9 +11,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const root = document.documentElement;
     root.classList.add('light');
     root.classList.remove('dark');
-    root.style.backgroundColor = '#ffffff';
-    document.body.style.backgroundColor = '#ffffff';
-    document.body.style.color = '#0f172a';
+    root.style.backgroundColor = '#02182b';
+    document.body.style.backgroundColor = 'transparent';
+    document.body.style.color = '#ffffff';
     localStorage.setItem('aeroviz-theme', 'light');
   }, []);
 

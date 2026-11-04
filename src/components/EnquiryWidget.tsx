@@ -49,7 +49,7 @@ export const EnquiryWidget: React.FC = () => {
   const [flightError, setFlightError] = useState('');
 
   // Other form state
-  const [otherService, setOtherService] = useState('Hotel booking');
+  const [otherService, setOtherService] = useState('Farm Stay Retreat');
   const [otherNotes, setOtherNotes] = useState('');
   const [otherError, setOtherError] = useState('');
 
@@ -112,11 +112,11 @@ export const EnquiryWidget: React.FC = () => {
   };
 
   return (
-    <div className="glass glass--panel p-5 sm:p-7 shadow-xl relative z-20 w-full mt-8   bg-white border border-slate-200/90 backdrop-blur-2xl">
+    <div className="glass glass--panel p-5 sm:p-7 shadow-2xl relative z-20 w-full mt-8 border border-white/20 backdrop-blur-2xl text-white">
       {/* Tabs */}
       <div 
         role="tablist" 
-        className="flex items-center gap-1.5 p-1.5   bg-slate-100 border border-slate-200 rounded-2xl mb-6"
+        className="flex items-center gap-1.5 p-1.5 bg-white/10 border border-white/15 rounded-2xl mb-6"
       >
         <button
           type="button"
@@ -126,7 +126,7 @@ export const EnquiryWidget: React.FC = () => {
           className={`flex-1 py-2.5 px-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
             activeTab === 'visa' 
               ? 'bg-pink text-white shadow-pinkGlow' 
-              : ' :text-white :bg-white/5 text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+              : 'text-white/75 hover:text-white hover:bg-white/10'
           }`}
         >
           <FileCheck className="w-4 h-4" />
@@ -141,7 +141,7 @@ export const EnquiryWidget: React.FC = () => {
           className={`flex-1 py-2.5 px-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
             activeTab === 'flight' 
               ? 'bg-pink text-white shadow-pinkGlow' 
-              : ' :text-white :bg-white/5 text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+              : 'text-white/75 hover:text-white hover:bg-white/10'
           }`}
         >
           <Plane className="w-4 h-4" />
@@ -156,7 +156,7 @@ export const EnquiryWidget: React.FC = () => {
           className={`flex-1 py-2.5 px-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
             activeTab === 'other' 
               ? 'bg-pink text-white shadow-pinkGlow' 
-              : ' :text-white :bg-white/5 text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+              : 'text-white/75 hover:text-white hover:bg-white/10'
           }`}
         >
           <HelpCircle className="w-4 h-4" />
@@ -179,8 +179,8 @@ export const EnquiryWidget: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Nationality */}
               <div>
-                <label htmlFor="nationality-input" className="block text-xs font-semibold  text-slate-700 mb-1.5">
-                  Passport Nationality <span className="text-pink">*</span>
+                <label htmlFor="nationality-input" className="block text-xs font-semibold text-white/85 mb-1.5">
+                  Passport Nationality <span className="text-pink-300">*</span>
                 </label>
                 <input
                   id="nationality-input"
@@ -192,7 +192,7 @@ export const EnquiryWidget: React.FC = () => {
                     if (visaError) setVisaError('');
                   }}
                   placeholder="e.g. Pakistani, Indian, British"
-                  className="w-full px-4 py-2.5 rounded-2xl    :text-white/40 bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm font-medium focus:border-pink focus:outline-none focus:ring-1 focus:ring-pink transition-all shadow-inner"
+                  className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-sm font-medium focus:border-pink focus:outline-none focus:ring-1 focus:ring-pink transition-all"
                 />
                 <datalist id="nationalities-list">
                   {POPULAR_NATIONALITIES.map((nat) => (
@@ -203,17 +203,17 @@ export const EnquiryWidget: React.FC = () => {
 
               {/* Travel Month */}
               <div>
-                <label htmlFor="travel-month-select" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+                <label htmlFor="travel-month-select" className="block text-xs font-semibold text-white/85 mb-1.5">
                   Intended Travel Month
                 </label>
                 <select
                   id="travel-month-select"
                   value={month}
                   onChange={(e) => setMonth(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
+                  className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white text-sm font-medium focus:border-pink focus:outline-none transition-all cursor-pointer"
                 >
                   {MONTHS.map((m) => (
-                    <option key={m} value={m} className="  bg-white text-slate-900">{m}</option>
+                    <option key={m} value={m} className="bg-slate-900 text-white">{m}</option>
                   ))}
                 </select>
               </div>
@@ -222,21 +222,21 @@ export const EnquiryWidget: React.FC = () => {
             {/* Multiple Visa Validity Options */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label htmlFor="visa-validity-select" className="text-xs font-semibold  text-slate-700 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-pink" />
-                  <span>Choose Visa Validity & Entry Option</span>
+                <label htmlFor="visa-validity-select" className="text-xs font-semibold text-white/85 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-pink-300" />
+                  <span>Choose Visa Validity &amp; Entry Option</span>
                 </label>
-                <span className="text-[11px] text-pink font-semibold">Fast Processing</span>
+                <span className="text-[11px] text-pink-300 font-semibold">Fast Processing</span>
               </div>
               
               <select
                 id="visa-validity-select"
                 value={selectedValidity}
                 onChange={(e) => setSelectedValidity(e.target.value)}
-                className="w-full px-4 py-3 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-semibold focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
+                className="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/20 text-white text-sm font-semibold focus:border-pink focus:outline-none transition-all cursor-pointer"
               >
                 {VISA_VALIDITY_OPTIONS.map((opt) => (
-                  <option key={opt.id} value={opt.id} className="  bg-white text-slate-900">
+                  <option key={opt.id} value={opt.id} className="bg-slate-900 text-white">
                     {opt.label}
                   </option>
                 ))}
@@ -250,7 +250,7 @@ export const EnquiryWidget: React.FC = () => {
                 { id: '30_multi', name: '30 Days Multi' },
                 { id: '60_single', name: '60 Days Single' },
                 { id: '60_multi', name: '60 Days Multi' },
-                { id: 'inside_change', name: 'Inside Country' }
+                { id: 'visa_change_flight', name: 'Inside Country' }
               ].map((chip) => (
                 <button
                   key={chip.id}
@@ -259,7 +259,7 @@ export const EnquiryWidget: React.FC = () => {
                   className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
                     selectedValidity === chip.id
                       ? 'bg-pink text-white font-bold shadow-pinkGlow'
-                      : '  :bg-white/15 bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/15'
                   }`}
                 >
                   {chip.name}
@@ -268,7 +268,7 @@ export const EnquiryWidget: React.FC = () => {
             </div>
 
             {visaError && (
-              <div className="flex items-center gap-2 text-pink text-xs font-semibold bg-pink-500/10 p-2.5 rounded-xl border border-pink/30">
+              <div className="flex items-center gap-2 text-pink-200 text-xs font-semibold bg-pink-500/20 p-2.5 rounded-xl border border-pink/40">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{visaError}</span>
               </div>
@@ -278,7 +278,7 @@ export const EnquiryWidget: React.FC = () => {
               type="submit"
               className="btn-pink w-full py-3.5 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 text-base shadow-pinkGlow mt-3"
             >
-              <span>Check requirements & cost on WhatsApp</span>
+              <span>Check requirements &amp; cost on WhatsApp</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </motion.form>
@@ -296,12 +296,12 @@ export const EnquiryWidget: React.FC = () => {
             className="space-y-4"
           >
             {/* Worldwide Flight Highlight Pill */}
-            <div className="flex items-center justify-between p-2.5 rounded-xl bg-pink/10 border border-pink/20 text-xs  text-slate-800">
-              <span className="font-semibold text-pink flex items-center gap-1.5">
+            <div className="flex items-center justify-between p-2.5 rounded-xl bg-pink/20 border border-pink/30 text-xs text-white">
+              <span className="font-semibold text-pink-200 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
                 Flight tickets to every country
               </span>
-              <span className="text-[10px]  text-slate-600">500+ Airlines Worldwide</span>
+              <span className="text-[10px] text-white/75">500+ Airlines Worldwide</span>
             </div>
 
             {/* Trip Type Selector */}
@@ -314,7 +314,7 @@ export const EnquiryWidget: React.FC = () => {
                   className={`py-2 px-3 rounded-xl text-xs font-semibold transition-all ${
                     tripType === type
                       ? 'bg-pink text-white shadow-pinkGlow'
-                      : '  :bg-white/15 bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/15'
                   }`}
                 >
                   {type}
@@ -324,7 +324,7 @@ export const EnquiryWidget: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="flight-from" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+                <label htmlFor="flight-from" className="block text-xs font-semibold text-white/85 mb-1.5">
                   Departure City / Airport
                 </label>
                 <input
@@ -333,13 +333,13 @@ export const EnquiryWidget: React.FC = () => {
                   value={flightFrom}
                   onChange={(e) => setFlightFrom(e.target.value)}
                   placeholder="e.g. Dubai (DXB)"
-                  className="w-full px-4 py-2.5 rounded-2xl    :text-white/40 bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner"
+                  className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-sm font-medium focus:border-pink focus:outline-none transition-all"
                 />
               </div>
 
               <div>
-                <label htmlFor="flight-to" className="block text-xs font-semibold  text-slate-700 mb-1.5">
-                  Destination City / Airport <span className="text-pink">*</span>
+                <label htmlFor="flight-to" className="block text-xs font-semibold text-white/85 mb-1.5">
+                  Destination City / Airport <span className="text-pink-300">*</span>
                 </label>
                 <input
                   id="flight-to"
@@ -350,15 +350,15 @@ export const EnquiryWidget: React.FC = () => {
                     if (flightError) setFlightError('');
                   }}
                   placeholder="e.g. London (LHR), Karachi, Manila"
-                  className="w-full px-4 py-2.5 rounded-2xl    :text-white/40 bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner"
+                  className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-sm font-medium focus:border-pink focus:outline-none transition-all"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
-                <label htmlFor="depart-date" className="block text-xs font-semibold  text-slate-700 mb-1.5">
-                  Depart Date <span className="text-pink">*</span>
+                <label htmlFor="depart-date" className="block text-xs font-semibold text-white/85 mb-1.5">
+                  Depart Date <span className="text-pink-300">*</span>
                 </label>
                 <input
                   id="depart-date"
@@ -368,13 +368,13 @@ export const EnquiryWidget: React.FC = () => {
                     setDepartDate(e.target.value);
                     if (flightError) setFlightError('');
                   }}
-                  className="w-full px-3 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner"
+                  className="w-full px-3 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white text-sm font-medium focus:border-pink focus:outline-none transition-all [color-scheme:dark]"
                 />
               </div>
 
               {tripType === 'Round-trip' ? (
                 <div>
-                  <label htmlFor="return-date" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+                  <label htmlFor="return-date" className="block text-xs font-semibold text-white/85 mb-1.5">
                     Return Date
                   </label>
                   <input
@@ -382,47 +382,47 @@ export const EnquiryWidget: React.FC = () => {
                     type="date"
                     value={returnDate}
                     onChange={(e) => setReturnDate(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner"
+                    className="w-full px-3 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white text-sm font-medium focus:border-pink focus:outline-none transition-all [color-scheme:dark]"
                   />
                 </div>
               ) : (
                 <div>
-                  <label htmlFor="flight-pref" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+                  <label htmlFor="flight-pref" className="block text-xs font-semibold text-white/85 mb-1.5">
                     Flight Routing
                   </label>
                   <select
                     id="flight-pref"
                     value={flightPreference}
                     onChange={(e) => setFlightPreference(e.target.value as any)}
-                    className="w-full px-3 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
+                    className="w-full px-3 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white text-sm font-medium focus:border-pink focus:outline-none transition-all cursor-pointer"
                   >
-                    <option value="Direct flight only" className="  bg-white text-slate-900">Direct flights only</option>
-                    <option value="Best value / Any" className="  bg-white text-slate-900">Best value / Any</option>
-                    <option value="Specific airline" className="  bg-white text-slate-900">Specific airline</option>
+                    <option value="Direct flight only" className="bg-slate-900 text-white">Direct flights only</option>
+                    <option value="Best value / Any" className="bg-slate-900 text-white">Best value / Any</option>
+                    <option value="Specific airline" className="bg-slate-900 text-white">Specific airline</option>
                   </select>
                 </div>
               )}
 
               <div>
-                <label htmlFor="cabin-select" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+                <label htmlFor="cabin-select" className="block text-xs font-semibold text-white/85 mb-1.5">
                   Cabin Class
                 </label>
                 <select
                   id="cabin-select"
                   value={cabinClass}
                   onChange={(e) => setCabinClass(e.target.value as any)}
-                  className="w-full px-3 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
+                  className="w-full px-3 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white text-sm font-medium focus:border-pink focus:outline-none transition-all cursor-pointer"
                 >
-                  <option value="Economy Saver" className="  bg-white text-slate-900">Economy Saver</option>
-                  <option value="Premium Economy" className="  bg-white text-slate-900">Premium Economy</option>
-                  <option value="Business Class" className="  bg-white text-slate-900">Business Class</option>
-                  <option value="First Class" className="  bg-white text-slate-900">First Class</option>
+                  <option value="Economy Saver" className="bg-slate-900 text-white">Economy Saver</option>
+                  <option value="Premium Economy" className="bg-slate-900 text-white">Premium Economy</option>
+                  <option value="Business Class" className="bg-slate-900 text-white">Business Class</option>
+                  <option value="First Class" className="bg-slate-900 text-white">First Class</option>
                 </select>
               </div>
             </div>
 
             <div className="flex items-center justify-between pt-1">
-              <span className="text-xs  text-slate-700">Passengers:</span>
+              <span className="text-xs text-white/80">Passengers:</span>
               <div className="flex items-center gap-1.5">
                 {[1, 2, 3, 4, '5+'].map((num) => (
                   <button
@@ -432,7 +432,7 @@ export const EnquiryWidget: React.FC = () => {
                     className={`w-8 h-8 rounded-xl text-xs font-bold transition-all ${
                       passengers === num || (num === '5+' && passengers >= 5)
                         ? 'bg-pink text-white shadow-pinkGlow'
-                        : '  :bg-white/15 bg-slate-100 text-slate-700 hover:bg-slate-200'
+                        : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/15'
                     }`}
                   >
                     {num}
@@ -442,7 +442,7 @@ export const EnquiryWidget: React.FC = () => {
             </div>
 
             {flightError && (
-              <div className="flex items-center gap-2 text-pink text-xs font-semibold bg-pink-500/10 p-2.5 rounded-xl border border-pink/30">
+              <div className="flex items-center gap-2 text-pink-200 text-xs font-semibold bg-pink-500/20 p-2.5 rounded-xl border border-pink/40">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{flightError}</span>
               </div>
@@ -470,29 +470,29 @@ export const EnquiryWidget: React.FC = () => {
             className="space-y-4"
           >
             <div>
-              <label htmlFor="other-service-select" className="block text-xs font-semibold  text-slate-700 mb-1.5">
+              <label htmlFor="other-service-select" className="block text-xs font-semibold text-white/85 mb-1.5">
                 Service Required
               </label>
               <select
                 id="other-service-select"
                 value={otherService}
                 onChange={(e) => setOtherService(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-2xl    bg-slate-50 border border-slate-200 text-slate-900 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner cursor-pointer"
+                className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white text-sm font-medium focus:border-pink focus:outline-none transition-all cursor-pointer"
               >
-                <option value="Farm Stay Retreat" className="  bg-white text-slate-900">Farm Stay Retreat (Private Villas & Pools)</option>
-                <option value="Desert Safari Adventure" className="  bg-white text-slate-900">Desert Safari (Dune Bashing & BBQ Dinner)</option>
-                <option value="City Tours (Dubai & Abu Dhabi)" className="  bg-white text-slate-900">City Tours (Dubai, Abu Dhabi & Sightseeing)</option>
-                <option value="Private Yacht Charter" className="  bg-white text-slate-900">Yacht Services (Dubai Marina & Palm Cruising)</option>
-                <option value="Hajj & Umrah Pilgrimage" className="  bg-white text-slate-900">Hajj / Umrah Services (Full Spiritual Package)</option>
-                <option value="Custom Tour Packages" className="  bg-white text-slate-900">Tour Packages (Domestic & International Holidays)</option>
-                <option value="2-Year Residence Visa" className="  bg-white text-slate-900">2 Years Residence Visa (Freelance / Investor)</option>
-                <option value="Family Visa Sponsorship" className="  bg-white text-slate-900">Family Visa Sponsorship & Documentation</option>
+                <option value="Farm Stay Retreat" className="bg-slate-900 text-white">Farm Stay Retreat (Private Villas &amp; Pools)</option>
+                <option value="Desert Safari Adventure" className="bg-slate-900 text-white">Desert Safari (Dune Bashing &amp; BBQ Dinner)</option>
+                <option value="City Tours (Dubai & Abu Dhabi)" className="bg-slate-900 text-white">City Tours (Dubai, Abu Dhabi &amp; Sightseeing)</option>
+                <option value="Private Yacht Charter" className="bg-slate-900 text-white">Yacht Services (Dubai Marina &amp; Palm Cruising)</option>
+                <option value="Hajj & Umrah Pilgrimage" className="bg-slate-900 text-white">Hajj / Umrah Services (Full Spiritual Package)</option>
+                <option value="Custom Tour Packages" className="bg-slate-900 text-white">Tour Packages (Domestic &amp; International Holidays)</option>
+                <option value="2-Year Residence Visa" className="bg-slate-900 text-white">2 Years Residence Visa (Freelance / Investor)</option>
+                <option value="Family Visa Sponsorship" className="bg-slate-900 text-white">Family Visa Sponsorship &amp; Documentation</option>
               </select>
             </div>
 
             <div>
-              <label htmlFor="other-notes" className="block text-xs font-semibold  text-slate-700 mb-1.5">
-                Tell us what you need <span className="text-pink">*</span>
+              <label htmlFor="other-notes" className="block text-xs font-semibold text-white/85 mb-1.5">
+                Tell us what you need <span className="text-pink-300">*</span>
               </label>
               <textarea
                 id="other-notes"
@@ -503,12 +503,12 @@ export const EnquiryWidget: React.FC = () => {
                   if (otherError) setOtherError('');
                 }}
                 placeholder="e.g. Need a 4-star hotel in downtown Dubai for 4 nights, or comprehensive travel insurance for Europe..."
-                className="w-full px-4 py-2.5 rounded-2xl    :text-white/40 bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm font-medium focus:border-pink focus:outline-none transition-all shadow-inner resize-none"
+                className="w-full px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/45 text-sm font-medium focus:border-pink focus:outline-none transition-all resize-none"
               />
             </div>
 
             {otherError && (
-              <div className="flex items-center gap-2 text-pink text-xs font-semibold bg-pink-500/10 p-2.5 rounded-xl border border-pink/30">
+              <div className="flex items-center gap-2 text-pink-200 text-xs font-semibold bg-pink-500/20 p-2.5 rounded-xl border border-pink/40">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{otherError}</span>
               </div>
